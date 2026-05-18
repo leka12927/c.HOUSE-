@@ -84,9 +84,18 @@
       box-shadow: 0 8px 32px rgba(37,211,102,0.5);
     }
 
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 550ms ease, transform 550ms ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 100ms; }
+    .reveal-delay-2 { transition-delay: 200ms; }
+    .reveal-delay-3 { transition-delay: 300ms; }
+    /* Counter animation */
+    .counter { display: inline-block; }
     @media (prefers-reduced-motion: reduce) {
       .foil-text { animation: none; }
       .holo-card, .whatsapp-btn { transition: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
     }
   </style>
 </head>
@@ -102,9 +111,9 @@
 
       <!-- Nav links (desktop) -->
       <ul class="hidden md:flex items-center gap-8 font-body font-light text-sm text-charcoal/70">
-        <li><a href="#produits" class="hover:text-rosy transition-colors duration-200 cursor-pointer">Produits</a></li>
-        <li><a href="#comment-ca-marche" class="hover:text-rosy transition-colors duration-200 cursor-pointer">Comment ça marche</a></li>
-        <li><a href="#tarifs" class="hover:text-rosy transition-colors duration-200 cursor-pointer">Tarifs</a></li>
+        <li><a href="catalogue.html" class="hover:text-rosy transition-colors duration-200 cursor-pointer">Catalogue</a></li>
+        <li><a href="galerie.html" class="hover:text-rosy transition-colors duration-200 cursor-pointer">Galerie</a></li>
+        <li><a href="faq.html" class="hover:text-rosy transition-colors duration-200 cursor-pointer">FAQ</a></li>
         <li><a href="#contact" class="hover:text-rosy transition-colors duration-200 cursor-pointer">Contact</a></li>
       </ul>
 
@@ -133,9 +142,9 @@
     <!-- Mobile menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-ivory border-t border-rosy/20 px-4 pb-4 pt-2">
       <ul class="flex flex-col gap-3 font-body font-light text-sm text-charcoal/70">
-        <li><a href="#produits" class="block py-2 hover:text-rosy transition-colors duration-200 cursor-pointer">Produits</a></li>
-        <li><a href="#comment-ca-marche" class="block py-2 hover:text-rosy transition-colors duration-200 cursor-pointer">Comment ça marche</a></li>
-        <li><a href="#tarifs" class="block py-2 hover:text-rosy transition-colors duration-200 cursor-pointer">Tarifs</a></li>
+        <li><a href="catalogue.html" class="block py-2 hover:text-rosy transition-colors duration-200 cursor-pointer">Catalogue</a></li>
+        <li><a href="galerie.html" class="block py-2 hover:text-rosy transition-colors duration-200 cursor-pointer">Galerie</a></li>
+        <li><a href="faq.html" class="block py-2 hover:text-rosy transition-colors duration-200 cursor-pointer">FAQ</a></li>
         <li><a href="#contact" class="block py-2 hover:text-rosy transition-colors duration-200 cursor-pointer">Contact</a></li>
         <li>
           <a
@@ -202,17 +211,17 @@
     </div>
 
     <!-- Stats bar -->
-    <div class="mt-20 grid grid-cols-3 gap-6 sm:gap-12 max-w-lg mx-auto">
+    <div id="stats-bar" class="mt-20 grid grid-cols-3 gap-6 sm:gap-12 max-w-lg mx-auto">
       <div class="text-center">
-        <p class="font-heading text-4xl sm:text-5xl text-charcoal">48h</p>
+        <p class="font-heading text-4xl sm:text-5xl text-charcoal" data-count="48">48h</p>
         <p class="font-body font-light text-xs text-charcoal/50 uppercase tracking-widest mt-1">Livraison</p>
       </div>
       <div class="text-center border-x border-rosy/20">
-        <p class="font-heading text-4xl sm:text-5xl text-charcoal">5</p>
+        <p class="font-heading text-4xl sm:text-5xl text-charcoal" data-count="5">5</p>
         <p class="font-body font-light text-xs text-charcoal/50 uppercase tracking-widest mt-1">Finitions</p>
       </div>
       <div class="text-center">
-        <p class="font-heading text-4xl sm:text-5xl text-charcoal">25+</p>
+        <p class="font-heading text-4xl sm:text-5xl text-charcoal" data-count="25">25+</p>
         <p class="font-body font-light text-xs text-charcoal/50 uppercase tracking-widest mt-1">Pièces min.</p>
       </div>
     </div>
@@ -653,11 +662,14 @@
       <span class="font-heading text-xl tracking-widest2 text-ivory/60">
         PRINT<span class="text-rosy">&</span>SHINE<span class="text-rosy text-xs font-body font-light ml-1">CI</span>
       </span>
-      <p class="font-body font-light text-xs text-ivory/30 text-center">
-        Abidjan, Côte d'Ivoire · Stickers & labels thermiques personnalisés
-      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4 font-body font-light text-xs text-ivory/30">
+        <a href="catalogue.html" class="hover:text-rosy/60 transition-colors duration-200 cursor-pointer">Catalogue</a>
+        <a href="galerie.html" class="hover:text-rosy/60 transition-colors duration-200 cursor-pointer">Galerie</a>
+        <a href="faq.html" class="hover:text-rosy/60 transition-colors duration-200 cursor-pointer">FAQ</a>
+        <a href="mentions-legales.html" class="hover:text-rosy/60 transition-colors duration-200 cursor-pointer">Mentions légales</a>
+      </div>
       <p class="font-body font-light text-xs text-ivory/30">
-        &copy; 2025 Print &amp; Shine CI
+        &copy; 2025 Print &amp; Shine CI · Abidjan
       </p>
     </div>
   </footer>
@@ -675,8 +687,8 @@
     </svg>
   </a>
 
-  <!-- Mobile menu JS -->
   <script>
+    // Mobile menu
     const toggle = document.getElementById('mobile-menu-toggle');
     const menu   = document.getElementById('mobile-menu');
     toggle.addEventListener('click', () => {
@@ -690,6 +702,39 @@
         toggle.setAttribute('aria-expanded', 'false');
       });
     });
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Animated counters
+    function animateCounter(el, target, suffix, duration) {
+      let start = 0;
+      const step = target / (duration / 16);
+      const timer = setInterval(() => {
+        start = Math.min(start + step, target);
+        el.textContent = Math.floor(start) + suffix;
+        if (start >= target) clearInterval(timer);
+      }, 16);
+    }
+    const statsObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const counters = [
+          { el: e.target.querySelector('[data-count="48"]'), val: 48, suffix: 'h' },
+          { el: e.target.querySelector('[data-count="5"]'), val: 5, suffix: '' },
+          { el: e.target.querySelector('[data-count="25"]'), val: 25, suffix: '+' },
+        ];
+        counters.forEach(c => { if (c.el) animateCounter(c.el, c.val, c.suffix, 1200); });
+        statsObserver.unobserve(e.target);
+      });
+    }, { threshold: 0.5 });
+    const statsBar = document.getElementById('stats-bar');
+    if (statsBar) statsObserver.observe(statsBar);
   </script>
 
 </body>

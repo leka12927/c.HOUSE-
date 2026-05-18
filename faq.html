@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FAQ Print & Shine CI — Toutes vos questions sur les commandes, livraisons, paiements et produits." />
+  <title>FAQ — Print & Shine CI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { charcoal: '#2A2529', ivory: '#F3F0E7', rosy: '#BC8F8F', 'rosy-light': '#D4AEAE', 'rosy-dark': '#9A7070' },
+          fontFamily: { heading: ['"Bebas Neue"', 'sans-serif'], body: ['"Outfit"', 'sans-serif'] },
+          letterSpacing: { widest2: '0.2em' },
+        },
+      },
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background-color: #F3F0E7; color: #2A2529; }
+    .whatsapp-btn { background: #25D366; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 200ms ease; }
+    .whatsapp-btn:hover { transform: scale(1.08); }
+    /* Accordion */
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 350ms ease, padding 200ms ease; }
+    .faq-answer.open { max-height: 500px; }
+    .faq-icon { transition: transform 250ms ease; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 450ms ease, transform 450ms ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .faq-answer { transition: none; } }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-ivory/90 backdrop-blur-md border-b border-rosy/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <a href="index.html" class="font-heading text-2xl tracking-widest2 text-charcoal">PRINT<span class="text-rosy">&</span>SHINE<span class="text-rosy text-sm font-body font-light ml-1">CI</span></a>
+      <ul class="hidden md:flex items-center gap-8 font-body font-light text-sm text-charcoal/70">
+        <li><a href="catalogue.html" class="hover:text-rosy transition-colors duration-200 cursor-pointer">Catalogue</a></li>
+        <li><a href="galerie.html" class="hover:text-rosy transition-colors duration-200 cursor-pointer">Galerie</a></li>
+        <li><a href="faq.html" class="text-rosy cursor-pointer">FAQ</a></li>
+        <li><a href="index.html#contact" class="hover:text-rosy transition-colors duration-200 cursor-pointer">Contact</a></li>
+      </ul>
+      <a href="https://wa.me/2250700949805?text=Bonjour%20Print%20%26%20Shine%20CI%2C%20je%20voudrais%20commander%20!" target="_blank" rel="noopener noreferrer"
+        class="hidden md:inline-flex items-center gap-2 bg-charcoal text-ivory font-body font-light text-sm px-5 py-2.5 rounded-full hover:bg-rosy-dark transition-colors duration-200 cursor-pointer">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Commander
+      </a>
+      <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-lg text-charcoal hover:bg-rosy/10 cursor-pointer" aria-label="Menu" aria-expanded="false">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-ivory border-t border-rosy/20 px-4 pb-4 pt-2">
+      <ul class="flex flex-col gap-3 font-body font-light text-sm text-charcoal/70">
+        <li><a href="catalogue.html" class="block py-2 hover:text-rosy cursor-pointer">Catalogue</a></li>
+        <li><a href="galerie.html" class="block py-2 hover:text-rosy cursor-pointer">Galerie</a></li>
+        <li><a href="faq.html" class="block py-2 text-rosy cursor-pointer">FAQ</a></li>
+        <li><a href="index.html#contact" class="block py-2 hover:text-rosy cursor-pointer">Contact</a></li>
+        <li><a href="https://wa.me/2250700949805" target="_blank" rel="noopener noreferrer" class="inline-flex bg-charcoal text-ivory px-5 py-2.5 rounded-full mt-2 cursor-pointer">Commander</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="font-body font-light text-rosy uppercase tracking-widest2 text-xs mb-4 reveal">Questions fréquentes</p>
+      <h1 class="font-heading text-6xl sm:text-7xl text-charcoal mb-6 reveal">FAQ</h1>
+      <p class="font-body font-light text-charcoal/60 text-lg leading-relaxed reveal">
+        Tout ce que vous devez savoir avant de passer commande. Une question non répondue ? WhatsApp nous répond en quelques minutes.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ SECTIONS -->
+  <section class="px-4 sm:px-6 lg:px-8 pb-24">
+    <div class="max-w-3xl mx-auto space-y-10">
+
+      <!-- Section Commande -->
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-full bg-rosy/15 flex items-center justify-center">
+            <svg class="w-4 h-4 text-rosy" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z"/></svg>
+          </div>
+          <h2 class="font-heading text-2xl text-charcoal">Commande</h2>
+        </div>
+        <div class="space-y-3">
+
+          <div class="faq-item bg-white/70 border border-rosy/15 rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left cursor-pointer hover:bg-rosy/5 transition-colors duration-200" aria-expanded="false">
+              <span class="font-body font-light text-sm text-charcoal pr-4">Quel est le minimum de commande ?</span>
+              <svg class="faq-icon w-5 h-5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            </button>
+            <div class="faq-answer px-5">
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed pb-5">Le minimum de commande est de <strong class="font-light text-charcoal">25 pièces</strong> par finition, à partir de <strong class="font-light text-charcoal">3 000 FCFA</strong>. Il n'y a pas de maximum — plus vous commandez, plus le prix unitaire diminue.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white/70 border border-rosy/15 rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left cursor-pointer hover:bg-rosy/5 transition-colors duration-200" aria-expanded="false">
+              <span class="font-body font-light text-sm text-charcoal pr-4">Comment passer une commande ?</span>
+              <svg class="faq-icon w-5 h-5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            </button>
+            <div class="faq-answer px-5">
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed pb-5">C'est très simple ! Envoyez un message sur <strong class="font-light text-charcoal">WhatsApp au 07 00 94 98 05</strong> en indiquant : la finition souhaitée, la quantité, et votre idée de design (logo, texte, couleurs). Nous prenons en charge le reste.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white/70 border border-rosy/15 rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left cursor-pointer hover:bg-rosy/5 transition-colors duration-200" aria-expanded="false">
+              <span class="font-body font-light text-sm text-charcoal pr-4">Puis-je commander plusieurs finitions différentes ?</span>
+              <svg class="faq-icon w-5 h-5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            </button>
+            <div class="faq-answer px-5">
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed pb-5">Oui ! Vous pouvez commander différentes finitions dans la même commande. Le minimum de <strong class="font-light text-charcoal">25 pièces s'applique par finition</strong>. N'hésitez pas à nous contacter pour un devis personnalisé.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white/70 border border-rosy/15 rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left cursor-pointer hover:bg-rosy/5 transition-colors duration-200" aria-expanded="false">
+              <span class="font-body font-light text-sm text-charcoal pr-4">Puis-je modifier ma commande après paiement ?</span>
+              <svg class="faq-icon w-5 h-5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            </button>
+            <div class="faq-answer px-5">
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed pb-5">Les modifications sont possibles <strong class="font-light text-charcoal">avant validation du design final</strong>. Une fois le design approuvé et la production lancée, les modifications ne sont plus possibles. C'est pourquoi nous prenons soin de vous envoyer un aperçu avant impression.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Section Design -->
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-full bg-rosy/15 flex items-center justify-center">
+            <svg class="w-4 h-4 text-rosy" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/></svg>
+          </div>
+          <h2 class="font-heading text-2xl text-charcoal">Design</h2>
+        </div>
+        <div class="space-y-3">
+
+          <div class="faq-item bg-white/70 border border-rosy/15 rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left cursor-pointer hover:bg-rosy/5 transition-colors duration-200" aria-expanded="false">
+              <span class="font-body font-light text-sm text-charcoal pr-4">Le design est-il vraiment inclus ?</span>
+              <svg class="faq-icon w-5 h-5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            </button>
+            <div class="faq-answer px-5">
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed pb-5"><strong class="font-light text-charcoal">Oui, le design est entièrement inclus</strong> dans le prix de votre commande. Nous créons votre sticker sur Canva Pro et vous envoyons un aperçu pour validation avant impression. Aucun frais caché.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white/70 border border-rosy/15 rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left cursor-pointer hover:bg-rosy/5 transition-colors duration-200" aria-expanded="false">
+              <span class="font-body font-light text-sm text-charcoal pr-4">Je n'ai pas de logo — vous pouvez en créer un ?</span>
+              <svg class="faq-icon w-5 h-5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            </button>
+            <div class="faq-answer px-5">
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed pb-5">Pas de problème ! Si vous n'avez pas de logo, nous créons un design <strong class="font-light text-charcoal">à partir de votre nom de marque, vos couleurs et votre style</strong>. Dites-nous simplement votre vision et nous nous chargeons du reste.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white/70 border border-rosy/15 rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left cursor-pointer hover:bg-rosy/5 transition-colors duration-200" aria-expanded="false">
+              <span class="font-body font-light text-sm text-charcoal pr-4">Puis-je fournir mon propre design ?</span>
+              <svg class="faq-icon w-5 h-5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            </button>
+            <div class="faq-answer px-5">
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed pb-5">Absolument ! Si vous avez déjà un design prêt, envoyez-le nous en <strong class="font-light text-charcoal">format PNG ou PDF haute résolution</strong> (300 dpi minimum). Nous vérifierons qu'il est adapté à l'impression avant de lancer.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white/70 border border-rosy/15 rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left cursor-pointer hover:bg-rosy/5 transition-colors duration-200" aria-expanded="false">
+              <span class="font-body font-light text-sm text-charcoal pr-4">Combien de révisions de design sont incluses ?</span>
+              <svg class="faq-icon w-5 h-5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            </button>
+            <div class="faq-answer px-5">
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed pb-5">Nous incluons <strong class="font-light text-charcoal">2 révisions</strong> dans chaque commande. Si le design ne vous convient pas après la première maquette, nous l'ajustons selon vos retours. Des révisions supplémentaires peuvent être demandées selon les cas.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Section Livraison & Paiement -->
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-full bg-rosy/15 flex items-center justify-center">
+            <svg class="w-4 h-4 text-rosy" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+          </div>
+          <h2 class="font-heading text-2xl text-charcoal">Livraison & Paiement</h2>
+        </div>
+        <div class="space-y-3">
+
+          <div class="faq-item bg-white/70 border border-rosy/15 rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left cursor-pointer hover:bg-rosy/5 transition-colors duration-200" aria-expanded="false">
+              <span class="font-body font-light text-sm text-charcoal pr-4">Quels sont les délais de livraison ?</span>
+              <svg class="faq-icon w-5 h-5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            </button>
+            <div class="faq-answer px-5">
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed pb-5">Nous livrons en <strong class="font-light text-charcoal">48h à Abidjan</strong> après validation du design et confirmation du paiement. Pour les commandes urgentes, contactez-nous directement sur WhatsApp et nous ferons notre maximum.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white/70 border border-rosy/15 rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left cursor-pointer hover:bg-rosy/5 transition-colors duration-200" aria-expanded="false">
+              <span class="font-body font-light text-sm text-charcoal pr-4">Livrez-vous en dehors d'Abidjan ?</span>
+              <svg class="faq-icon w-5 h-5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            </button>
+            <div class="faq-answer px-5">
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed pb-5">Actuellement, notre service de livraison est disponible <strong class="font-light text-charcoal">uniquement à Abidjan</strong>. Pour les villes de l'intérieur ou d'autres pays, contactez-nous sur WhatsApp pour trouver une solution adaptée.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white/70 border border-rosy/15 rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left cursor-pointer hover:bg-rosy/5 transition-colors duration-200" aria-expanded="false">
+              <span class="font-body font-light text-sm text-charcoal pr-4">Quels modes de paiement acceptez-vous ?</span>
+              <svg class="faq-icon w-5 h-5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            </button>
+            <div class="faq-answer px-5">
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed pb-5">Nous acceptons <strong class="font-light text-charcoal">Orange Money</strong> et <strong class="font-light text-charcoal">Wave</strong>. Le paiement se fait après validation du design et avant lancement de l'impression. Aucune avance n'est demandée avant l'aperçu.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white/70 border border-rosy/15 rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left cursor-pointer hover:bg-rosy/5 transition-colors duration-200" aria-expanded="false">
+              <span class="font-body font-light text-sm text-charcoal pr-4">Y a-t-il des frais de livraison ?</span>
+              <svg class="faq-icon w-5 h-5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            </button>
+            <div class="faq-answer px-5">
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed pb-5">Les frais de livraison varient selon votre zone à Abidjan. Ils vous seront communiqués lors du devis. Le prix affiché (<strong class="font-light text-charcoal">à partir de 3 000 FCFA</strong>) correspond aux produits, design inclus, hors livraison.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Section Produits -->
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-full bg-rosy/15 flex items-center justify-center">
+            <svg class="w-4 h-4 text-rosy" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+          </div>
+          <h2 class="font-heading text-2xl text-charcoal">Produits</h2>
+        </div>
+        <div class="space-y-3">
+
+          <div class="faq-item bg-white/70 border border-rosy/15 rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left cursor-pointer hover:bg-rosy/5 transition-colors duration-200" aria-expanded="false">
+              <span class="font-body font-light text-sm text-charcoal pr-4">Les stickers sont-ils résistants à l'eau ?</span>
+              <svg class="faq-icon w-5 h-5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            </button>
+            <div class="faq-answer px-5">
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed pb-5"><strong class="font-light text-charcoal">Oui</strong>, nos stickers et labels sont résistants à l'eau et à l'humidité. Ils sont conçus pour tenir sur les emballages, bouteilles et colis. Pour une utilisation en extérieur prolongée, renseignez-vous sur les options adaptées.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white/70 border border-rosy/15 rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left cursor-pointer hover:bg-rosy/5 transition-colors duration-200" aria-expanded="false">
+              <span class="font-body font-light text-sm text-charcoal pr-4">Quels formats et tailles proposez-vous ?</span>
+              <svg class="faq-icon w-5 h-5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            </button>
+            <div class="faq-answer px-5">
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed pb-5">Nous proposons <strong class="font-light text-charcoal">plusieurs formats et formes</strong> : rond, carré, rectangle, ovale, et formes personnalisées. Les tailles varient selon la finition. Indiquez-nous vos dimensions souhaitées lors de la commande et nous vous conseillerons.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white/70 border border-rosy/15 rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left cursor-pointer hover:bg-rosy/5 transition-colors duration-200" aria-expanded="false">
+              <span class="font-body font-light text-sm text-charcoal pr-4">Quelle finition choisir pour mes gâteaux / pâtisseries ?</span>
+              <svg class="faq-icon w-5 h-5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            </button>
+            <div class="faq-answer px-5">
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed pb-5">Pour les pâtissières, nous recommandons le <strong class="font-light text-charcoal">sticker holographique ou doré</strong> pour les boîtes et coffrets. Pour les sacs et emballages transparents, le <strong class="font-light text-charcoal">sticker transparent</strong> crée un effet très élégant. N'hésitez pas à nous décrire votre produit pour une recommandation personnalisée.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Still have questions CTA -->
+    <div class="max-w-3xl mx-auto mt-14 reveal">
+      <div class="bg-charcoal rounded-2xl p-8 text-center">
+        <p class="font-heading text-3xl text-ivory mb-3">Votre question n'est pas ici ?</p>
+        <p class="font-body font-light text-ivory/50 text-sm mb-6 leading-relaxed">Écrivez-nous directement sur WhatsApp. Nous répondons en quelques minutes.</p>
+        <a href="https://wa.me/2250700949805?text=Bonjour%2C%20j%27ai%20une%20question%20concernant%20Print%20%26%20Shine%20CI%20!" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 bg-[#25D366] text-white font-body font-light text-base px-8 py-4 rounded-full hover:bg-[#1db954] transition-colors duration-200 cursor-pointer">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Poser ma question
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-rosy/10 py-8 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <a href="index.html" class="font-heading text-xl tracking-widest2 text-ivory/60">PRINT<span class="text-rosy">&</span>SHINE<span class="text-rosy text-xs font-body font-light ml-1">CI</span></a>
+      <div class="flex items-center gap-6 font-body font-light text-xs text-ivory/30">
+        <a href="mentions-legales.html" class="hover:text-rosy/60 transition-colors duration-200 cursor-pointer">Mentions légales</a>
+        <a href="catalogue.html" class="hover:text-rosy/60 transition-colors duration-200 cursor-pointer">Catalogue</a>
+      </div>
+      <p class="font-body font-light text-xs text-ivory/30">&copy; 2025 Print &amp; Shine CI</p>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/2250700949805?text=Bonjour%20Print%20%26%20Shine%20CI%20!" target="_blank" rel="noopener noreferrer"
+    class="whatsapp-btn fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center cursor-pointer" aria-label="WhatsApp">
+    <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    // Mobile menu
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', isOpen);
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Accordion
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-answer');
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-answer').classList.remove('open');
+        el.querySelector('button').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

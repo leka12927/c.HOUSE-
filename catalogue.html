@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Catalogue Print & Shine CI — Stickers holographiques, dorés, argentés, transparents et étiquettes d'expédition à Abidjan. Dès 25 pièces, design inclus." />
+  <title>Catalogue — Print & Shine CI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            charcoal: '#2A2529', ivory: '#F3F0E7',
+            rosy: '#BC8F8F', 'rosy-light': '#D4AEAE', 'rosy-dark': '#9A7070',
+          },
+          fontFamily: { heading: ['"Bebas Neue"', 'sans-serif'], body: ['"Outfit"', 'sans-serif'] },
+          letterSpacing: { widest2: '0.2em' },
+        },
+      },
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background-color: #F3F0E7; color: #2A2529; }
+    .badge-gold { background: linear-gradient(135deg, #c9a96e, #e8d5a0, #c9a96e); color: #2A2529; }
+    .whatsapp-btn { background: #25D366; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 200ms ease; }
+    .whatsapp-btn:hover { transform: scale(1.08); }
+    .product-card { transition: transform 200ms ease, box-shadow 200ms ease; }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(42,37,41,0.12); }
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 500ms ease, transform 500ms ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-ivory/90 backdrop-blur-md border-b border-rosy/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <a href="index.html" class="font-heading text-2xl tracking-widest2 text-charcoal">PRINT<span class="text-rosy">&</span>SHINE<span class="text-rosy text-sm font-body font-light ml-1">CI</span></a>
+      <ul class="hidden md:flex items-center gap-8 font-body font-light text-sm text-charcoal/70">
+        <li><a href="catalogue.html" class="text-rosy font-light cursor-pointer">Catalogue</a></li>
+        <li><a href="galerie.html" class="hover:text-rosy transition-colors duration-200 cursor-pointer">Galerie</a></li>
+        <li><a href="faq.html" class="hover:text-rosy transition-colors duration-200 cursor-pointer">FAQ</a></li>
+        <li><a href="index.html#contact" class="hover:text-rosy transition-colors duration-200 cursor-pointer">Contact</a></li>
+      </ul>
+      <a href="https://wa.me/2250700949805?text=Bonjour%20Print%20%26%20Shine%20CI%2C%20je%20voudrais%20commander%20!" target="_blank" rel="noopener noreferrer"
+        class="hidden md:inline-flex items-center gap-2 bg-charcoal text-ivory font-body font-light text-sm px-5 py-2.5 rounded-full hover:bg-rosy-dark transition-colors duration-200 cursor-pointer">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Commander
+      </a>
+      <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-lg text-charcoal hover:bg-rosy/10 transition-colors duration-200 cursor-pointer" aria-label="Menu" aria-expanded="false">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-ivory border-t border-rosy/20 px-4 pb-4 pt-2">
+      <ul class="flex flex-col gap-3 font-body font-light text-sm text-charcoal/70">
+        <li><a href="catalogue.html" class="block py-2 text-rosy cursor-pointer">Catalogue</a></li>
+        <li><a href="galerie.html" class="block py-2 hover:text-rosy transition-colors duration-200 cursor-pointer">Galerie</a></li>
+        <li><a href="faq.html" class="block py-2 hover:text-rosy transition-colors duration-200 cursor-pointer">FAQ</a></li>
+        <li><a href="index.html#contact" class="block py-2 hover:text-rosy transition-colors duration-200 cursor-pointer">Contact</a></li>
+        <li><a href="https://wa.me/2250700949805" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-charcoal text-ivory px-5 py-2.5 rounded-full mt-2 cursor-pointer">Commander</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 text-center">
+    <div class="max-w-3xl mx-auto">
+      <p class="font-body font-light text-rosy uppercase tracking-widest2 text-xs mb-4 reveal">Notre catalogue complet</p>
+      <h1 class="font-heading text-6xl sm:text-7xl text-charcoal mb-6 reveal">Nos produits</h1>
+      <p class="font-body font-light text-charcoal/60 text-lg leading-relaxed reveal">
+        Cinq finitions premium pour sublimer votre marque. Design inclus, livraison 48h à Abidjan. Minimum 25 pièces à partir de 3 000 FCFA.
+      </p>
+    </div>
+  </section>
+
+  <!-- FILTER TABS -->
+  <section class="px-4 sm:px-6 lg:px-8 pb-6">
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-center gap-2">
+      <button onclick="filterProducts('all')" id="tab-all"
+        class="tab-btn font-body font-light text-sm px-5 py-2 rounded-full border border-charcoal bg-charcoal text-ivory cursor-pointer transition-all duration-200">
+        Tous
+      </button>
+      <button onclick="filterProducts('sticker')" id="tab-sticker"
+        class="tab-btn font-body font-light text-sm px-5 py-2 rounded-full border border-rosy/30 text-charcoal/70 hover:border-rosy cursor-pointer transition-all duration-200">
+        Stickers
+      </button>
+      <button onclick="filterProducts('label')" id="tab-label"
+        class="tab-btn font-body font-light text-sm px-5 py-2 rounded-full border border-rosy/30 text-charcoal/70 hover:border-rosy cursor-pointer transition-all duration-200">
+        Labels
+      </button>
+      <button onclick="filterProducts('evenement')" id="tab-evenement"
+        class="tab-btn font-body font-light text-sm px-5 py-2 rounded-full border border-rosy/30 text-charcoal/70 hover:border-rosy cursor-pointer transition-all duration-200">
+        Événements
+      </button>
+    </div>
+  </section>
+
+  <!-- PRODUCTS GRID -->
+  <section class="px-4 sm:px-6 lg:px-8 pb-24">
+    <div class="max-w-6xl mx-auto">
+      <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Holographique -->
+        <article class="product-card bg-white/80 border border-rosy/15 rounded-2xl overflow-hidden reveal" data-category="sticker evenement">
+          <div class="h-48 bg-gradient-to-br from-purple-200/40 via-pink-200/40 to-yellow-200/40 relative flex items-center justify-center">
+            <div class="w-24 h-24 rounded-xl bg-gradient-to-br from-purple-400/40 via-pink-400/40 to-yellow-400/40 border border-white/50 flex items-center justify-center backdrop-blur-sm">
+              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+            </div>
+            <span class="absolute top-4 right-4 badge-gold text-xs font-body font-light px-3 py-1 rounded-full">Populaire</span>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-pink-400"></span>
+              <span class="font-body font-light text-xs text-charcoal/50 uppercase tracking-widest">Sticker</span>
+            </div>
+            <h2 class="font-heading text-2xl text-charcoal mb-2">Holographique</h2>
+            <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed mb-5">
+              Effet arc-en-ciel irisé qui change selon la lumière. Le sticker qui fait tourner les têtes. Idéal pour un rendu premium et mémorable sur vos produits, colis ou emballages.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Adhésif haute qualité, résistant à l'eau</li>
+              <li class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Formes personnalisées (rond, rectangle, ovale…)</li>
+              <li class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Idéal : pâtissières, cosmétiques, événements</li>
+            </ul>
+            <div class="flex items-center justify-between pt-4 border-t border-rosy/10">
+              <div>
+                <p class="font-heading text-2xl text-charcoal">3 000 FCFA</p>
+                <p class="font-body font-light text-xs text-charcoal/40">dès 25 pièces · design inclus</p>
+              </div>
+              <a href="https://wa.me/2250700949805?text=Bonjour%2C%20je%20voudrais%20commander%20des%20stickers%20holographiques%20!" target="_blank" rel="noopener noreferrer"
+                class="bg-charcoal text-ivory font-body font-light text-xs px-4 py-2.5 rounded-full hover:bg-rosy-dark transition-colors duration-200 cursor-pointer">
+                Commander
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Doré -->
+        <article class="product-card bg-white/80 border border-rosy/15 rounded-2xl overflow-hidden reveal" data-category="sticker evenement">
+          <div class="h-48 bg-gradient-to-br from-yellow-100/60 via-amber-100/60 to-yellow-200/40 relative flex items-center justify-center">
+            <div class="w-24 h-24 rounded-xl bg-gradient-to-br from-yellow-400/50 to-amber-500/40 border border-yellow-300/50 flex items-center justify-center">
+              <svg class="w-10 h-10 text-yellow-700" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+              <span class="font-body font-light text-xs text-charcoal/50 uppercase tracking-widest">Sticker</span>
+            </div>
+            <h2 class="font-heading text-2xl text-charcoal mb-2">Doré</h2>
+            <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed mb-5">
+              Finition or brillant pour une image luxueuse et haut de gamme. Parfait pour les pâtissières, coffrets cadeaux, cosmétiques prestige et événements chics.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Or brillant ou mat selon votre préférence</li>
+              <li class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Inscription noire ou blanche sur fond doré</li>
+              <li class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Idéal : mariages, coffrets, gâteaux de luxe</li>
+            </ul>
+            <div class="flex items-center justify-between pt-4 border-t border-rosy/10">
+              <div>
+                <p class="font-heading text-2xl text-charcoal">3 000 FCFA</p>
+                <p class="font-body font-light text-xs text-charcoal/40">dès 25 pièces · design inclus</p>
+              </div>
+              <a href="https://wa.me/2250700949805?text=Bonjour%2C%20je%20voudrais%20commander%20des%20stickers%20dor%C3%A9s%20!" target="_blank" rel="noopener noreferrer"
+                class="bg-charcoal text-ivory font-body font-light text-xs px-4 py-2.5 rounded-full hover:bg-rosy-dark transition-colors duration-200 cursor-pointer">
+                Commander
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Argenté -->
+        <article class="product-card bg-white/80 border border-rosy/15 rounded-2xl overflow-hidden reveal" data-category="sticker">
+          <div class="h-48 bg-gradient-to-br from-slate-100/60 via-gray-100/60 to-slate-200/40 relative flex items-center justify-center">
+            <div class="w-24 h-24 rounded-xl bg-gradient-to-br from-slate-300/50 to-gray-400/40 border border-slate-200/50 flex items-center justify-center">
+              <svg class="w-10 h-10 text-slate-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+              <span class="font-body font-light text-xs text-charcoal/50 uppercase tracking-widest">Sticker</span>
+            </div>
+            <h2 class="font-heading text-2xl text-charcoal mb-2">Argenté</h2>
+            <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed mb-5">
+              Finition argent élégante et moderne. L'option minimaliste qui s'adapte à toutes les identités visuelles. Très populaire pour les boutiques de mode et cosmétiques.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Argent brillant ou chromé</li>
+              <li class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Contraste parfait avec texte noir ou coloré</li>
+              <li class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Idéal : boutiques mode, tech, cosmétiques</li>
+            </ul>
+            <div class="flex items-center justify-between pt-4 border-t border-rosy/10">
+              <div>
+                <p class="font-heading text-2xl text-charcoal">3 000 FCFA</p>
+                <p class="font-body font-light text-xs text-charcoal/40">dès 25 pièces · design inclus</p>
+              </div>
+              <a href="https://wa.me/2250700949805?text=Bonjour%2C%20je%20voudrais%20commander%20des%20stickers%20argent%C3%A9s%20!" target="_blank" rel="noopener noreferrer"
+                class="bg-charcoal text-ivory font-body font-light text-xs px-4 py-2.5 rounded-full hover:bg-rosy-dark transition-colors duration-200 cursor-pointer">
+                Commander
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Transparent -->
+        <article class="product-card bg-white/80 border border-rosy/15 rounded-2xl overflow-hidden reveal" data-category="sticker">
+          <div class="h-48 bg-gradient-to-br from-rosy/10 via-ivory to-rosy/5 relative flex items-center justify-center">
+            <div class="w-24 h-24 rounded-xl border-2 border-dashed border-rosy/30 flex items-center justify-center bg-white/30 backdrop-blur-sm">
+              <svg class="w-10 h-10 text-rosy/50" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-2 h-2 rounded-full border border-rosy bg-transparent"></span>
+              <span class="font-body font-light text-xs text-charcoal/50 uppercase tracking-widest">Sticker</span>
+            </div>
+            <h2 class="font-heading text-2xl text-charcoal mb-2">Transparent</h2>
+            <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed mb-5">
+              Effet "flottant" très tendance : votre design semble imprimé directement sur le produit. Parfait pour bouteilles, bocaux, emballages clairs et fenêtres.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Fond invisible, design visible uniquement</li>
+              <li class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Résistant à l'eau, longue durée</li>
+              <li class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Idéal : soins, bouteilles, emballages clairs</li>
+            </ul>
+            <div class="flex items-center justify-between pt-4 border-t border-rosy/10">
+              <div>
+                <p class="font-heading text-2xl text-charcoal">3 000 FCFA</p>
+                <p class="font-body font-light text-xs text-charcoal/40">dès 25 pièces · design inclus</p>
+              </div>
+              <a href="https://wa.me/2250700949805?text=Bonjour%2C%20je%20voudrais%20commander%20des%20stickers%20transparents%20!" target="_blank" rel="noopener noreferrer"
+                class="bg-charcoal text-ivory font-body font-light text-xs px-4 py-2.5 rounded-full hover:bg-rosy-dark transition-colors duration-200 cursor-pointer">
+                Commander
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Étiquettes d'expédition -->
+        <article class="product-card bg-white/80 border border-rosy/15 rounded-2xl overflow-hidden reveal md:col-span-2" data-category="label">
+          <div class="md:flex">
+            <div class="h-48 md:h-auto md:w-64 flex-shrink-0 bg-gradient-to-br from-rosy/15 via-rosy/5 to-ivory relative flex items-center justify-center">
+              <div class="w-24 h-24 rounded-xl bg-white border border-rosy/20 flex items-center justify-center shadow-sm">
+                <svg class="w-10 h-10 text-rosy" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+              </div>
+            </div>
+            <div class="p-6 flex-1">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="w-2 h-2 rounded-full bg-rosy"></span>
+                <span class="font-body font-light text-xs text-charcoal/50 uppercase tracking-widest">Label thermique</span>
+              </div>
+              <h2 class="font-heading text-2xl text-charcoal mb-2">Étiquettes d'Expédition</h2>
+              <p class="font-body font-light text-sm text-charcoal/60 leading-relaxed mb-5">
+                Professionnalisez vos livraisons avec des étiquettes thermiques de qualité. Nom, adresse, code-barres, QR code, logo — tout est personnalisé pour impressionner vos clients dès la réception du colis.
+              </p>
+              <div class="grid grid-cols-2 gap-3 mb-6">
+                <div class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Codes-barres & QR codes</div>
+                <div class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Logo & branding inclus</div>
+                <div class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Adhésif fort, résistant</div>
+                <div class="flex items-center gap-2 font-body font-light text-xs text-charcoal/60"><svg class="w-3.5 h-3.5 text-rosy flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Idéal : vendeuses en ligne</div>
+              </div>
+              <div class="flex items-center justify-between pt-4 border-t border-rosy/10">
+                <div>
+                  <p class="font-heading text-2xl text-charcoal">3 000 FCFA</p>
+                  <p class="font-body font-light text-xs text-charcoal/40">dès 25 pièces · design inclus</p>
+                </div>
+                <a href="https://wa.me/2250700949805?text=Bonjour%2C%20je%20voudrais%20commander%20des%20%C3%A9tiquettes%20d%27exp%C3%A9dition%20!" target="_blank" rel="noopener noreferrer"
+                  class="bg-charcoal text-ivory font-body font-light text-xs px-4 py-2.5 rounded-full hover:bg-rosy-dark transition-colors duration-200 cursor-pointer">
+                  Commander
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Empty state -->
+      <div id="empty-state" class="hidden text-center py-16">
+        <p class="font-body font-light text-charcoal/40 text-base">Aucun produit dans cette catégorie.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 bg-charcoal">
+    <div class="max-w-3xl mx-auto text-center reveal">
+      <h2 class="font-heading text-5xl text-ivory mb-4">Vous ne savez pas quoi choisir ?</h2>
+      <p class="font-body font-light text-ivory/50 text-base mb-8 leading-relaxed">Décrivez-nous votre projet sur WhatsApp et nous vous conseillons la finition idéale gratuitement.</p>
+      <a href="https://wa.me/2250700949805?text=Bonjour%2C%20j%27ai%20besoin%20de%20conseils%20pour%20choisir%20ma%20finition%20!" target="_blank" rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 bg-[#25D366] text-white font-body font-light text-base px-8 py-4 rounded-full hover:bg-[#1db954] transition-colors duration-200 cursor-pointer">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Demander conseil
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-rosy/10 py-8 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <a href="index.html" class="font-heading text-xl tracking-widest2 text-ivory/60">PRINT<span class="text-rosy">&</span>SHINE<span class="text-rosy text-xs font-body font-light ml-1">CI</span></a>
+      <div class="flex items-center gap-6 font-body font-light text-xs text-ivory/30">
+        <a href="mentions-legales.html" class="hover:text-rosy/60 transition-colors duration-200 cursor-pointer">Mentions légales</a>
+        <a href="faq.html" class="hover:text-rosy/60 transition-colors duration-200 cursor-pointer">FAQ</a>
+      </div>
+      <p class="font-body font-light text-xs text-ivory/30">&copy; 2025 Print &amp; Shine CI</p>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/2250700949805?text=Bonjour%20Print%20%26%20Shine%20CI%20!" target="_blank" rel="noopener noreferrer"
+    class="whatsapp-btn fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center cursor-pointer" aria-label="WhatsApp">
+    <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    // Mobile menu
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', isOpen);
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Filter
+    function filterProducts(category) {
+      const cards = document.querySelectorAll('#products-grid article');
+      const tabs = document.querySelectorAll('.tab-btn');
+      tabs.forEach(t => { t.classList.remove('bg-charcoal', 'text-ivory', 'border-charcoal'); t.classList.add('border-rosy/30', 'text-charcoal/70'); });
+      document.getElementById('tab-' + category).classList.add('bg-charcoal', 'text-ivory', 'border-charcoal');
+      document.getElementById('tab-' + category).classList.remove('border-rosy/30', 'text-charcoal/70');
+      let visible = 0;
+      cards.forEach(card => {
+        const cats = card.dataset.category || '';
+        const show = category === 'all' || cats.includes(category);
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      document.getElementById('empty-state').classList.toggle('hidden', visible > 0);
+    }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
