@@ -37,6 +37,12 @@
       "skillPath": "skills/executing-plans/SKILL.md",
       "computedHash": "b41c919caf1bb07fbacb0e29899ac513f9eb11cd4dd695975ad352c2c03cc4d7"
     },
+    "finding-duplicate-functions": {
+      "source": "obra/superpowers-lab",
+      "sourceType": "github",
+      "skillPath": "skills/finding-duplicate-functions/SKILL.md",
+      "computedHash": "edbb8200d972353832d985e09f7584001479588fd321a4813d8162c8b6cdd5d2"
+    },
     "finishing-a-development-branch": {
       "source": "obra/superpowers",
       "sourceType": "github",
@@ -91,6 +97,12 @@
       "skillPath": "skills/logo-designer/SKILL.md",
       "computedHash": "37f00324349c15112c606110548566ee76390c234cecb5801a175c4e0823f729"
     },
+    "mcp-cli": {
+      "source": "obra/superpowers-lab",
+      "sourceType": "github",
+      "skillPath": "skills/mcp-cli/SKILL.md",
+      "computedHash": "c5b4fa7ae6a77a97cbc5e9b2b8cdf388153721f40e47f2cdcd5aa29bf522a7ff"
+    },
     "minimalist-ui": {
       "source": "Leonxlnx/taste-skill",
       "sourceType": "github",
@@ -114,6 +126,12 @@
       "sourceType": "github",
       "skillPath": "skills/requesting-code-review/SKILL.md",
       "computedHash": "874f3786b05007a8b4a60452a4cd89b9917c645d34b6b1e40ea05037d12f0e67"
+    },
+    "slack-messaging": {
+      "source": "obra/superpowers-lab",
+      "sourceType": "github",
+      "skillPath": "skills/slack-messaging/SKILL.md",
+      "computedHash": "62d899bd4419d62e992d2e03582361831dc87e2c0d0c2525e7d6b112c5234c9d"
     },
     "stitch-design-taste": {
       "source": "Leonxlnx/taste-skill",
@@ -151,11 +169,23 @@
       "skillPath": "skills/using-superpowers/SKILL.md",
       "computedHash": "de10fd3ff46d797acc92b9df6b3ea456a5cd1d095b73c90bc921e83cce4c5bb9"
     },
+    "using-tmux-for-interactive-commands": {
+      "source": "obra/superpowers-lab",
+      "sourceType": "github",
+      "skillPath": "skills/using-tmux-for-interactive-commands/SKILL.md",
+      "computedHash": "c056256933e832a5a48fffe68a481cce7fe5729e3645382a0656d592705d6a55"
+    },
     "verification-before-completion": {
       "source": "obra/superpowers",
       "sourceType": "github",
       "skillPath": "skills/verification-before-completion/SKILL.md",
       "computedHash": "9b446f0c7fe1cfb560b1d34439523b1a76d5f177290007b2c053a1c749a4a8ba"
+    },
+    "windows-vm": {
+      "source": "obra/superpowers-lab",
+      "sourceType": "github",
+      "skillPath": "skills/windows-vm/SKILL.md",
+      "computedHash": "2022737589bb8e59ba4b86309640964aed9c83f5ec78b23aadf5a7b95482c75a"
     },
     "writing-plans": {
       "source": "obra/superpowers",
