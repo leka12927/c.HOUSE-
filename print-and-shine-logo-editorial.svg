@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 540" width="1440" height="540">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&amp;family=Outfit:wght@300&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Background: Pale Ivory #F3F0E7 -->
+  <rect width="1440" height="540" fill="#F3F0E7"/>
+
+  <!-- ── Thin perimeter lines ── -->
+  <rect x="68" y="30" width="1304" height="0.8" fill="#2A2529" opacity="0.18"/>
+  <rect x="68" y="510" width="1304" height="0.8" fill="#2A2529" opacity="0.18"/>
+  <rect x="30" y="68" width="0.8" height="404" fill="#2A2529" opacity="0.12"/>
+  <rect x="1410" y="68" width="0.8" height="404" fill="#2A2529" opacity="0.12"/>
+
+  <!-- ── Corner L-brackets — Top Left ── -->
+  <rect x="30" y="30" width="28" height="1.2" fill="#2A2529" opacity="0.8"/>
+  <rect x="30" y="30" width="1.2" height="28" fill="#2A2529" opacity="0.8"/>
+  <!-- Cross TL -->
+  <rect x="20" y="29.4" width="20" height="1.2" fill="#2A2529" opacity="0.55"/>
+  <rect x="29.4" y="20" width="1.2" height="20" fill="#2A2529" opacity="0.55"/>
+
+  <!-- ── Corner L-brackets — Top Right ── -->
+  <rect x="1382" y="30" width="28" height="1.2" fill="#2A2529" opacity="0.8"/>
+  <rect x="1409" y="30" width="1.2" height="28" fill="#2A2529" opacity="0.8"/>
+  <!-- Cross TR -->
+  <rect x="1400" y="29.4" width="20" height="1.2" fill="#2A2529" opacity="0.55"/>
+  <rect x="1409.4" y="20" width="1.2" height="20" fill="#2A2529" opacity="0.55"/>
+
+  <!-- ── Corner L-brackets — Bottom Left ── -->
+  <rect x="30" y="510" width="28" height="1.2" fill="#2A2529" opacity="0.8"/>
+  <rect x="30" y="482" width="1.2" height="28" fill="#2A2529" opacity="0.8"/>
+  <!-- Cross BL -->
+  <rect x="20" y="509.4" width="20" height="1.2" fill="#2A2529" opacity="0.55"/>
+  <rect x="29.4" y="500" width="1.2" height="20" fill="#2A2529" opacity="0.55"/>
+
+  <!-- ── Corner L-brackets — Bottom Right ── -->
+  <rect x="1382" y="510" width="28" height="1.2" fill="#2A2529" opacity="0.8"/>
+  <rect x="1409" y="482" width="1.2" height="28" fill="#2A2529" opacity="0.8"/>
+  <!-- Cross BR -->
+  <rect x="1400" y="509.4" width="20" height="1.2" fill="#2A2529" opacity="0.55"/>
+  <rect x="1409.4" y="500" width="1.2" height="20" fill="#2A2529" opacity="0.55"/>
+
+  <!-- ── Sparkle helper: 4-pointed star paths ── -->
+  <!-- Sparkle at (cx,cy,size): defined inline via polygon/path -->
+
+  <!-- Top-left sparkle cluster -->
+  <path d="M110,36 L113,47 L124,50 L113,53 L110,64 L107,53 L96,50 L107,47 Z" fill="#2A2529" opacity="0.58"/>
+  <path d="M135,46 L136.5,50 L140,51.5 L136.5,53 L135,57 L133.5,53 L130,51.5 L133.5,50 Z" fill="#2A2529" opacity="0.55"/>
+  <path d="M157,38 L160,47 L169,50 L160,53 L157,62 L154,53 L145,50 L154,47 Z" fill="#2A2529" opacity="0.52"/>
+  <path d="M176,47.5 L177,50 L179.5,51 L177,52 L176,54.5 L175,52 L172.5,51 L175,50 Z" fill="#2A2529" opacity="0.5"/>
+  <path d="M194,42 L196,48 L202,50 L196,52 L194,58 L192,52 L186,50 L192,48 Z" fill="#2A2529" opacity="0.52"/>
+
+  <!-- Top-right sparkle cluster (mirrored) -->
+  <path d="M1330,36 L1333,47 L1344,50 L1333,53 L1330,64 L1327,53 L1316,50 L1327,47 Z" fill="#2A2529" opacity="0.58"/>
+  <path d="M1305,46 L1306.5,50 L1310,51.5 L1306.5,53 L1305,57 L1303.5,53 L1300,51.5 L1303.5,50 Z" fill="#2A2529" opacity="0.55"/>
+  <path d="M1283,38 L1286,47 L1295,50 L1286,53 L1283,62 L1280,53 L1271,50 L1280,47 Z" fill="#2A2529" opacity="0.52"/>
+  <path d="M1264,47.5 L1265,50 L1267.5,51 L1265,52 L1264,54.5 L1263,52 L1260.5,51 L1263,50 Z" fill="#2A2529" opacity="0.5"/>
+  <path d="M1246,42 L1248,48 L1254,50 L1248,52 L1246,58 L1244,52 L1238,50 L1244,48 Z" fill="#2A2529" opacity="0.52"/>
+
+  <!-- Bottom-left sparkle cluster -->
+  <path d="M110,476 L113,487 L124,490 L113,493 L110,504 L107,493 L96,490 L107,487 Z" fill="#2A2529" opacity="0.58"/>
+  <path d="M135,486 L136.5,490 L140,491.5 L136.5,493 L135,497 L133.5,493 L130,491.5 L133.5,490 Z" fill="#2A2529" opacity="0.55"/>
+  <path d="M157,478 L160,487 L169,490 L160,493 L157,502 L154,493 L145,490 L154,487 Z" fill="#2A2529" opacity="0.52"/>
+  <path d="M176,487.5 L177,490 L179.5,491 L177,492 L176,494.5 L175,492 L172.5,491 L175,490 Z" fill="#2A2529" opacity="0.5"/>
+  <path d="M194,482 L196,488 L202,490 L196,492 L194,498 L192,492 L186,490 L192,488 Z" fill="#2A2529" opacity="0.52"/>
+
+  <!-- Bottom-right sparkle cluster -->
+  <path d="M1330,476 L1333,487 L1344,490 L1333,493 L1330,504 L1327,493 L1316,490 L1327,487 Z" fill="#2A2529" opacity="0.58"/>
+  <path d="M1305,486 L1306.5,490 L1310,491.5 L1306.5,493 L1305,497 L1303.5,493 L1300,491.5 L1303.5,490 Z" fill="#2A2529" opacity="0.55"/>
+  <path d="M1283,478 L1286,487 L1295,490 L1286,493 L1283,502 L1280,493 L1271,490 L1280,487 Z" fill="#2A2529" opacity="0.52"/>
+  <path d="M1264,487.5 L1265,490 L1267.5,491 L1265,492 L1264,494.5 L1263,492 L1260.5,491 L1263,490 Z" fill="#2A2529" opacity="0.5"/>
+  <path d="M1246,482 L1248,488 L1254,490 L1248,492 L1246,498 L1244,492 L1238,490 L1244,488 Z" fill="#2A2529" opacity="0.52"/>
+
+  <!-- Mid-side sparkles -->
+  <path d="M50,266 L52,270 L56,272 L52,274 L50,278 L48,274 L44,272 L48,270 Z" fill="#2A2529" opacity="0.28"/>
+  <path d="M1390,266 L1392,270 L1396,272 L1392,274 L1390,278 L1388,274 L1384,272 L1388,270 Z" fill="#2A2529" opacity="0.28"/>
+
+  <!-- ── Thin circle behind wordmark ── -->
+  <circle cx="720" cy="257" r="109" fill="none" stroke="#2A2529" stroke-width="0.7" opacity="0.22"/>
+
+  <!-- ── Small header text ── -->
+  <text x="720" y="100"
+    font-family="'Cormorant Garamond', Georgia, serif"
+    font-weight="300"
+    font-size="11"
+    fill="#2A2529"
+    opacity="0.5"
+    text-anchor="middle"
+    letter-spacing="4">
+    ABIDJAN  ·  CÔTE D'IVOIRE  ·  CRÉATIONS PERSONNALISÉES
+  </text>
+
+  <!-- ── MAIN WORDMARK ── -->
+  <text x="720" y="300"
+    font-family="'Cormorant Garamond', 'Times New Roman', Georgia, serif"
+    font-weight="300"
+    font-size="162"
+    fill="#2A2529"
+    text-anchor="middle"
+    letter-spacing="22">
+    PRINT &amp; SHINE
+  </text>
+
+  <!-- ── Central Rosy Brown sparkle (over the "&amp;") ── -->
+  <path d="M720,229 L725,249 L745,254 L725,259 L720,279 L715,259 L695,254 L715,249 Z" fill="#BC8F8F" opacity="0.92"/>
+
+  <!-- ── Short decorative rule ── -->
+  <rect x="630" y="336" width="180" height="0.8" fill="#2A2529" opacity="0.28"/>
+
+  <!-- ── Italic tagline ── -->
+  <text x="720" y="366"
+    font-family="'Cormorant Garamond', Georgia, serif"
+    font-weight="300"
+    font-style="italic"
+    font-size="21"
+    fill="#2A2529"
+    opacity="0.72"
+    text-anchor="middle"
+    letter-spacing="0.5">
+    Stickers &amp; Labels Personnalisés  ·  Livraison 48h à Abidjan
+  </text>
+
+  <!-- ── Fine description body text ── -->
+  <text x="720" y="396"
+    font-family="'Outfit', 'Helvetica Neue', Arial, sans-serif"
+    font-weight="300"
+    font-size="10"
+    fill="#2A2529"
+    opacity="0.38"
+    text-anchor="middle"
+    letter-spacing="2.5">
+    Holographique  ·  Doré  ·  Argenté  ·  Transparent  ·  Étiquette d'expédition  ·  Design inclus
+  </text>
+
+  <!-- ── Rosy Brown accent stars flanking tagline ── -->
+  <path d="M415,349 L416.5,353 L420,354.5 L416.5,356 L415,360 L413.5,356 L410,354.5 L413.5,353 Z" fill="#BC8F8F" opacity="0.62"/>
+  <path d="M1025,349 L1026.5,353 L1030,354.5 L1026.5,356 L1025,360 L1023.5,356 L1020,354.5 L1023.5,353 Z" fill="#BC8F8F" opacity="0.62"/>
+
+  <!-- ── Bottom spaced wordmark ── -->
+  <text x="720" y="483"
+    font-family="'Outfit', 'Helvetica Neue', Arial, sans-serif"
+    font-weight="300"
+    font-size="11"
+    fill="#2A2529"
+    opacity="0.55"
+    text-anchor="middle"
+    letter-spacing="6">
+    P R I N T  &amp;  S H I N E  C I
+  </text>
+
+  <!-- ── Small bottom sparkles flanking bottom text ── -->
+  <path d="M551,478 L552.5,482 L556,483.5 L552.5,485 L551,489 L549.5,485 L546,483.5 L549.5,482 Z" fill="#BC8F8F" opacity="0.5"/>
+  <path d="M889,478 L890.5,482 L894,483.5 L890.5,485 L889,489 L887.5,485 L884,483.5 L887.5,482 Z" fill="#BC8F8F" opacity="0.5"/>
+
+</svg>
