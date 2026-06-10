@@ -346,3 +346,47 @@ body {
   font-family: inherit;
 }
 .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
+
+/* Guide / Cours débutant */
+.hidden { display: none !important; }
+
+.guide-intro {
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.guide-intro h1 { margin: 0 0 8px; font-size: 28px; }
+.guide-intro p { margin: 0; color: var(--muted); max-width: 700px; }
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+.guide-wide { grid-column: 1 / -1; }
+
+@media (max-width: 1100px) {
+  .guide-grid { grid-template-columns: 1fr; }
+}
+
+.guide-card h3 { margin: 0 0 12px; font-size: 17px; }
+.guide-card dl { margin: 0; }
+.guide-card dt { font-weight: 700; margin-top: 10px; }
+.guide-card dt:first-child { margin-top: 0; }
+.guide-card dd { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+
+.guide-card ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; }
+.guide-card ol li { font-size: 14px; color: var(--text); }
+
+.guide-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.guide-steps li { font-size: 14px; background: #f7f8f9; border-radius: 12px; padding: 10px 14px; }
+
+.guide-tip {
+  margin: 16px 0 0;
+  background: var(--green-light);
+  color: var(--green-dark);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 14px;
+}

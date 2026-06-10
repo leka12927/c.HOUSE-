@@ -20,6 +20,7 @@
       <button class="side-link" data-view="transactions" title="Transactions">💳</button>
       <button class="side-link" data-view="budget" title="Budget">🧾</button>
       <button class="side-link" data-view="contacts" title="Contacts / Fournisseurs">👥</button>
+      <button class="side-link" data-view="guide" title="Cours / Guide débutant">📚</button>
     </nav>
     <div class="side-bottom">
       <button class="side-link" title="Paramètres">⚙️</button>
@@ -48,6 +49,9 @@
         <div class="avatar">👤</div>
       </div>
     </header>
+
+    <!-- Vue tableau de bord -->
+    <div id="dashboard-view">
 
     <!-- Welcome -->
     <section class="welcome">
@@ -176,6 +180,80 @@
         </div>
       </div>
 
+    </section>
+    </div>
+
+    <!-- Vue Cours / Guide débutant -->
+    <section id="guide-view" class="guide hidden">
+      <div class="guide-intro">
+        <h1>📚 Guide du débutant</h1>
+        <p>Vous découvrez la gestion de budget ? Voici les bases expliquées simplement,
+        adaptées à votre situation : ménage, commerce physique ou e-commerce.</p>
+      </div>
+
+      <div class="guide-grid">
+
+        <div class="card guide-card">
+          <h3>🔤 Le vocabulaire de base</h3>
+          <dl>
+            <dt>Recette / Revenu</dt>
+            <dd>Argent qui <strong>entre</strong> : salaire, vente, remboursement, paiement d'un client.</dd>
+            <dt>Dépense</dt>
+            <dd>Argent qui <strong>sort</strong> : loyer, courses, achat de stock, facture, abonnement.</dd>
+            <dt>Solde</dt>
+            <dd>Ce qu'il vous reste : <em>Solde = total des recettes − total des dépenses</em>.</dd>
+            <dt>Charges fixes</dt>
+            <dd>Dépenses qui reviennent chaque mois et qu'on ne peut pas éviter facilement (loyer, électricité, abonnements, salaires).</dd>
+            <dt>Trésorerie</dt>
+            <dd>L'argent immédiatement disponible (en caisse ou sur le compte) pour faire face aux dépenses.</dd>
+            <dt>Objectif d'épargne / de chiffre d'affaires</dt>
+            <dd>Le montant que vous visez à atteindre sur une période donnée.</dd>
+          </dl>
+        </div>
+
+        <div class="card guide-card">
+          <h3>🏠 Pour le ménage</h3>
+          <ol>
+            <li><strong>Notez tout</strong> : chaque salaire, chaque achat, même petit. Utilisez le bouton <em>"+ Ajouter une opération"</em>.</li>
+            <li><strong>Séparez fixe et variable</strong> : le loyer ou les abonnements ne changent pas, mais les courses ou les loisirs varient — surveillez surtout ces derniers.</li>
+            <li><strong>Règle simple (50/30/20)</strong> : 50% du revenu pour les besoins essentiels, 30% pour les envies, 20% pour l'épargne.</li>
+            <li><strong>Vérifiez le solde chaque semaine</strong> pour éviter les découverts en fin de mois.</li>
+          </ol>
+        </div>
+
+        <div class="card guide-card">
+          <h3>🏪 Pour un commerce physique</h3>
+          <ol>
+            <li><strong>Distinguez ventes et achats de stock</strong> : une vente est une recette, un réapprovisionnement est une dépense.</li>
+            <li><strong>Suivez votre trésorerie au quotidien</strong> : c'est l'argent qui vous permet de payer fournisseurs et salaires à temps.</li>
+            <li><strong>Calculez votre marge</strong> : <em>Marge = Prix de vente − Coût d'achat</em>. Une marge trop faible met le commerce en danger.</li>
+            <li><strong>Anticipez les charges fixes</strong> (loyer du local, salaires, assurances) : elles tombent même si les ventes baissent.</li>
+          </ol>
+        </div>
+
+        <div class="card guide-card">
+          <h3>🛒 Pour l'e-commerce</h3>
+          <ol>
+            <li><strong>Comptez tous les frais liés à une vente</strong> : commission de la plateforme, frais de paiement, livraison, publicité — pas seulement le prix payé par le client.</li>
+            <li><strong>Surveillez le coût d'acquisition client</strong> : combien dépensez-vous en publicité pour obtenir une commande ?</li>
+            <li><strong>Gérez les frais fixes mensuels</strong> : hébergement, abonnements aux outils, logiciel de comptabilité.</li>
+            <li><strong>Gardez un œil sur les remboursements et litiges</strong> : ils réduisent vos recettes réelles.</li>
+          </ol>
+        </div>
+
+        <div class="card guide-card guide-wide">
+          <h3>🧭 Comment utiliser ce tableau de bord</h3>
+          <ul class="guide-steps">
+            <li><strong>1. Choisissez votre onglet</strong> en haut : Ménage, Commerce physique ou E-commerce. Chaque onglet garde ses propres données.</li>
+            <li><strong>2. Ajoutez vos opérations</strong> avec le bouton <em>"+ Ajouter une opération"</em> ou les boutons <em>Recette ↑</em> / <em>Dépense ↓</em>.</li>
+            <li><strong>3. Lisez le graphique</strong> "Revenus / Dépenses" pour repérer les mois forts et les mois faibles.</li>
+            <li><strong>4. Surveillez le solde</strong> et les <em>charges fixes</em> pour savoir combien il vous reste réellement à dépenser.</li>
+            <li><strong>5. Exportez vos données</strong> régulièrement (icône ⬇️) pour garder une sauvegarde, par exemple avant de réinitialiser.</li>
+          </ul>
+          <p class="guide-tip">💡 Astuce : prenez l'habitude d'enregistrer une opération <strong>le jour même</strong>. C'est la meilleure façon de garder un suivi fiable, sans effort de mémoire en fin de mois.</p>
+        </div>
+
+      </div>
     </section>
   </main>
 </div>

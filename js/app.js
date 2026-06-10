@@ -410,10 +410,22 @@ document.querySelectorAll(".toggle-btn").forEach(btn => {
   });
 });
 
+const dashboardView = document.getElementById("dashboard-view");
+const guideView = document.getElementById("guide-view");
+
 document.querySelectorAll(".side-link").forEach(link => {
   link.addEventListener("click", () => {
     document.querySelectorAll(".side-link").forEach(l => l.classList.remove("active"));
     link.classList.add("active");
+
+    if (link.dataset.view === "guide") {
+      dashboardView.classList.add("hidden");
+      guideView.classList.remove("hidden");
+    } else {
+      guideView.classList.add("hidden");
+      dashboardView.classList.remove("hidden");
+      if (link.dataset.view === "dashboard") render();
+    }
   });
 });
 
