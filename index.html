@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestion - Tableau de bord</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="logo-dot"></span>
+      <span class="logo-text">Gestion+</span>
+    </div>
+    <nav class="side-nav">
+      <button class="side-link active" data-view="dashboard" title="Tableau de bord">📊</button>
+      <button class="side-link" data-view="transactions" title="Transactions">💳</button>
+      <button class="side-link" data-view="budget" title="Budget">🧾</button>
+      <button class="side-link" data-view="contacts" title="Contacts / Fournisseurs">👥</button>
+    </nav>
+    <div class="side-bottom">
+      <button class="side-link" title="Paramètres">⚙️</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-icon">G+</span>
+        <span class="brand-name">Gestion Plus</span>
+      </div>
+
+      <nav class="top-nav">
+        <button class="tab active" data-mode="menage">🏠 Ménage</button>
+        <button class="tab" data-mode="commerce">🏪 Commerce physique</button>
+        <button class="tab" data-mode="ecommerce">🛒 E-commerce</button>
+      </nav>
+
+      <div class="top-actions">
+        <button class="icon-btn" id="export-btn" title="Exporter en JSON">⬇️</button>
+        <button class="icon-btn" id="reset-btn" title="Réinitialiser les données de cet onglet">⟲</button>
+        <div class="avatar">👤</div>
+      </div>
+    </header>
+
+    <!-- Welcome -->
+    <section class="welcome">
+      <div>
+        <h1>Bienvenue, <span id="user-name">Sujon</span></h1>
+        <p id="mode-subtitle">Gestion du budget de votre ménage</p>
+      </div>
+      <div class="welcome-actions">
+        <input type="date" id="date-from">
+        <span>—</span>
+        <input type="date" id="date-to">
+        <button class="btn-primary" id="add-tx-btn">+ Ajouter une opération</button>
+      </div>
+    </section>
+
+    <!-- Cards grid -->
+    <section class="grid">
+
+      <!-- Card: Wallet / Goal -->
+      <div class="card card-goal">
+        <div class="card-head">
+          <div>
+            <h3 id="goal-title">Objectif d'épargne</h3>
+            <p id="goal-subtitle">Montant total visé</p>
+          </div>
+          <button class="ghost-icon">↗</button>
+        </div>
+        <div class="wallet-card">
+          <div class="wallet-top">
+            <span id="wallet-label">CARTE</span>
+            <span class="wallet-wifi">))) </span>
+          </div>
+          <p class="wallet-sub" id="wallet-name">Compte courant</p>
+          <p class="wallet-amount" id="wallet-amount">0,00 €</p>
+          <div class="wallet-bottom">
+            <span id="wallet-number">**** 0000</span>
+            <span id="wallet-exp">EXP --/--</span>
+          </div>
+        </div>
+        <div class="weekly-revenue">
+          <div>
+            <p class="muted">Variation hebdomadaire</p>
+            <p class="big" id="weekly-revenue">+0 €</p>
+          </div>
+          <span class="badge" id="weekly-percent">+0%</span>
+        </div>
+      </div>
+
+      <!-- Card: Chart -->
+      <div class="card card-chart">
+        <div class="card-head">
+          <div class="head-left">
+            <span class="calendar-icon">📅</span>
+            <h3 id="chart-title">Revenus / Dépenses</h3>
+          </div>
+          <div class="chart-toggle">
+            <button class="toggle-btn" data-period="month">Mensuel</button>
+            <button class="toggle-btn active" data-period="year">Annuel</button>
+          </div>
+          <button class="ghost-icon">⋮</button>
+        </div>
+        <canvas id="main-chart" height="220"></canvas>
+      </div>
+
+      <!-- Card: Balance -->
+      <div class="card card-balance">
+        <div class="card-head">
+          <div>
+            <h3 id="balance-title">Solde global</h3>
+            <p id="balance-subtitle">Total disponible</p>
+          </div>
+          <button class="ghost-icon">↗</button>
+        </div>
+        <p class="balance-label">Solde total</p>
+        <p class="balance-amount" id="balance-amount">0,00 €</p>
+        <canvas id="balance-chart" height="80"></canvas>
+        <div class="balance-actions">
+          <button class="btn-primary small" id="income-btn">Recette ↑</button>
+          <button class="btn-secondary small" id="expense-btn">Dépense ↓</button>
+        </div>
+      </div>
+
+      <!-- Card: History -->
+      <div class="card card-history">
+        <div class="card-head">
+          <div>
+            <h3 id="history-title">Historique des opérations</h3>
+            <p id="history-subtitle">Dernières transactions</p>
+          </div>
+          <button class="ghost-icon">↗</button>
+        </div>
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Libellé</th>
+              <th>Date</th>
+              <th>Catégorie</th>
+              <th>Statut</th>
+              <th>Montant</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="history-body"></tbody>
+        </table>
+      </div>
+
+      <!-- Card: Credit / Charges -->
+      <div class="card card-credit">
+        <div class="card-head-icon">
+          <span class="icon-box">🧮</span>
+          <div>
+            <h3 id="credit-title">Charges fixes</h3>
+            <p id="credit-subtitle">Total mensuel des charges</p>
+          </div>
+        </div>
+        <p class="credit-amount" id="credit-amount">0,00 €</p>
+        <div class="card mandatory">
+          <div class="card-head">
+            <div>
+              <h4 id="mandatory-title">Paiements récurrents</h4>
+              <p id="mandatory-subtitle">À venir</p>
+            </div>
+            <button class="ghost-icon">↗</button>
+          </div>
+          <div class="contacts-row" id="contacts-row"></div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<!-- Modal: add transaction -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <h3>Nouvelle opération</h3>
+    <form id="tx-form">
+      <label>Libellé
+        <input type="text" id="tx-label" required>
+      </label>
+      <label>Catégorie
+        <input type="text" id="tx-category" placeholder="Ex: Loyer, Vente, Stock...">
+      </label>
+      <label>Date
+        <input type="date" id="tx-date" required>
+      </label>
+      <label>Type
+        <select id="tx-type">
+          <option value="income">Recette (+)</option>
+          <option value="expense">Dépense (-)</option>
+        </select>
+      </label>
+      <label>Montant (€)
+        <input type="number" id="tx-amount" step="0.01" min="0" required>
+      </label>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" id="modal-cancel">Annuler</button>
+        <button type="submit" class="btn-primary">Enregistrer</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
