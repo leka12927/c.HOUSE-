@@ -357,6 +357,11 @@ body {
 }
 .guide-intro h1 { margin: 0 0 8px; font-size: 28px; }
 .guide-intro p { margin: 0; color: var(--muted); max-width: 700px; }
+.download-link {
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 16px;
+}
 
 .guide-grid {
   display: grid;
