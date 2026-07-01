@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samsung Galaxy S25 Ultra — The Intelligence of Now</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   MÜLLER-BROCKMANN GRID — ONE SOURCE OF TRUTH
+   12-col · 24px gutter · 72px margin · 8px baseline · 1440px max-width
+   Accent: Samsung Blue #1428A0
+   ===================================================================== */
+:root {
+  --cols: 12;
+  --bl: 8px;
+  --lh: 24px;
+  --gutter: 24px;
+  --margin: 72px;
+  --pad: 96px;
+  --maxw: 1440px;
+
+  --paper: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #5b6066;
+  --ink-xsoft: #9ba0a6;
+  --accent: #1428A0;
+  --accent-light: #e8eaf6;
+  --rule: #e0e0e0;
+
+  --g-col: rgba(20,40,160,.06);
+  --g-edge: rgba(20,40,160,.30);
+  --g-base: rgba(20,40,160,.18);
+  --g-base-min: rgba(20,40,160,.07);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: var(--lh);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+
+/* ---- GRID SCAFFOLD ---- */
+.spread { position: relative; width: 100%; }
+.wrap {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: var(--pad) var(--margin);
+}
+.wrap--flush { padding-top: 0; padding-bottom: 0; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  column-gap: var(--gutter);
+  row-gap: var(--lh);
+}
+.band {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  column-gap: var(--gutter);
+  row-gap: var(--lh);
+  align-items: start;
+}
+@supports not (grid-template-columns: subgrid) {
+  .band { grid-template-columns: repeat(var(--cols), 1fr); }
+}
+
+/* ---- GRID OVERLAY (inside .wrap → same box as content) ---- */
+.guides {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 60;
+  opacity: 0; transition: opacity .26s ease;
+}
+body.grid-on .guides { opacity: 1; }
+.guides .cols {
+  position: absolute; top: 0; bottom: 0;
+  left: var(--margin); right: var(--margin);
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  column-gap: var(--gutter);
+}
+.guides .col {
+  background: var(--g-col);
+  box-shadow: inset 1px 0 0 var(--g-edge), inset -1px 0 0 var(--g-edge);
+  position: relative;
+}
+.guides .col span {
+  position: absolute; top: 32px; left: 0; right: 0;
+  text-align: center;
+  font-family: "Space Mono", monospace;
+  font-size: 9px; line-height: 1;
+  color: var(--accent); opacity: .7;
+}
+.guides .rows {
+  position: absolute;
+  left: var(--margin); right: var(--margin);
+  top: var(--pad); bottom: 0;
+  background-image:
+    repeating-linear-gradient(to bottom, var(--g-base) 0 1px, transparent 1px var(--lh)),
+    repeating-linear-gradient(to bottom, var(--g-base-min) 0 1px, transparent 1px var(--bl));
+}
+.guides .mline {
+  position: absolute; top: 0; bottom: 0;
+  width: 1px; background: var(--g-edge);
+}
+.guides .mline.l { left: var(--margin); }
+.guides .mline.r { right: var(--margin); }
+
+/* ---- TOGGLE ---- */
+.toggle {
+  position: fixed; top: 20px; right: 20px; z-index: 300;
+  display: flex; align-items: center; gap: 8px;
+  background: var(--ink); color: #fff;
+  border: none; cursor: pointer;
+  font-family: "Space Mono", monospace;
+  font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+  padding: 10px 14px;
+  transition: background .2s;
+}
+.toggle .dot { width: 8px; height: 8px; border-radius: 50%; background: #555; }
+body.grid-on .toggle { background: var(--accent); }
+body.grid-on .toggle .dot { background: #fff; }
+
+/* ---- NAV ---- */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav .wrap { padding-top: 0; padding-bottom: 0; }
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-size: 20px; font-weight: 700; letter-spacing: -.02em;
+  color: var(--ink);
+}
+.nav-logo span { color: var(--accent); }
+.nav-links {
+  display: flex; gap: 40px; list-style: none;
+  font-size: 13px; font-weight: 500; letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.nav-links a { color: var(--ink-soft); transition: color .15s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta {
+  background: var(--accent); color: #fff;
+  font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  padding: 12px 24px; border: none; cursor: pointer;
+  transition: opacity .15s;
+}
+.nav-cta:hover { opacity: .85; }
+
+/* ---- HERO ---- */
+.hero-spread {
+  background: var(--ink);
+  color: #fff;
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 65% 40%, rgba(20,40,160,.35) 0%, transparent 70%),
+    linear-gradient(to bottom, #0a0a0a 0%, #0d0d1a 100%);
+}
+.hero-phone {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-54%);
+  width: 28%;
+  max-width: 400px;
+}
+.hero-phone-img {
+  width: 100%; height: auto;
+  /* Placeholder — real site uses high-res product shot */
+}
+.hero-phone-placeholder {
+  width: 100%;
+  aspect-ratio: 9/19;
+  background: linear-gradient(160deg, #1e2040 0%, #0d0d1a 40%, #1428A0 100%);
+  border-radius: 36px;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 0 120px rgba(20,40,160,.5),
+    inset 0 1px 0 rgba(255,255,255,.15);
+  position: relative;
+  overflow: hidden;
+}
+.hero-phone-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 10px; left: 50%; transform: translateX(-50%);
+  width: 80px; height: 8px;
+  background: rgba(255,255,255,.15);
+  border-radius: 4px;
+}
+.hero-phone-placeholder::after {
+  content: 'S25 Ultra';
+  position: absolute;
+  bottom: 40%; left: 50%; transform: translateX(-50%);
+  font-family: "Space Mono", monospace;
+  font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+}
+.hero-content { position: relative; z-index: 2; }
+.hero-content .wrap { padding-bottom: 120px; }
+.hero-kicker {
+  font-family: "Space Mono", monospace;
+  font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(255,255,255,.45);
+  margin-bottom: 24px;
+  display: block;
+}
+.hero-h1 {
+  font-size: clamp(64px, 7vw, 112px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -.04em;
+  color: #fff;
+  margin-bottom: 32px;
+  grid-column: 1 / 8;
+}
+.hero-h1 em { font-style: normal; color: var(--accent); }
+.hero-lede {
+  font-size: 18px; font-weight: 400; line-height: 32px;
+  color: rgba(255,255,255,.55);
+  max-width: 480px;
+  margin-bottom: 56px;
+  grid-column: 1 / 7;
+}
+.hero-actions {
+  display: flex; gap: 16px; align-items: center;
+}
+.btn-primary {
+  background: var(--accent); color: #fff;
+  font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  padding: 18px 40px; border: none; cursor: pointer;
+  transition: opacity .15s;
+}
+.btn-primary:hover { opacity: .85; }
+.btn-ghost {
+  background: transparent; color: rgba(255,255,255,.6);
+  font-size: 13px; font-weight: 500; letter-spacing: .08em;
+  padding: 18px 0; border: none; cursor: pointer;
+  border-bottom: 1px solid rgba(255,255,255,.3);
+  transition: color .15s, border-color .15s;
+}
+.btn-ghost:hover { color: #fff; border-color: #fff; }
+.hero-folio {
+  position: absolute;
+  bottom: 40px; left: var(--margin);
+  font-family: "Space Mono", monospace;
+  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.2);
+}
+.hero-stats {
+  position: absolute;
+  bottom: 40px; right: var(--margin);
+  display: flex; gap: 48px;
+}
+.hero-stat { text-align: right; }
+.hero-stat-num {
+  font-size: 28px; font-weight: 800; letter-spacing: -.03em;
+  color: #fff; display: block; line-height: var(--lh);
+}
+.hero-stat-label {
+  font-family: "Space Mono", monospace;
+  font-size: 9px; letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+}
+
+/* ---- SPECS BAND ---- */
+.specs-spread { background: var(--accent-light); }
+.specs-band-inner { display: flex; }
+.spec-item {
+  flex: 1;
+  padding: 48px 0;
+  border-right: 1px solid rgba(20,40,160,.12);
+  padding-right: 32px;
+}
+.spec-item:last-child { border-right: none; padding-right: 0; }
+.spec-num {
+  font-size: 56px; font-weight: 800; letter-spacing: -.04em;
+  color: var(--accent); line-height: 1;
+  display: block; margin-bottom: 8px;
+}
+.spec-unit {
+  font-size: 24px; font-weight: 300;
+}
+.spec-label {
+  font-family: "Space Mono", monospace;
+  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.spec-desc {
+  font-size: 13px; line-height: 20px; color: var(--ink-soft);
+  margin-top: 8px; max-width: 200px;
+}
+
+/* ---- FEATURE SECTIONS ---- */
+.section-kicker {
+  font-family: "Space Mono", monospace;
+  font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--accent);
+  display: block; margin-bottom: 16px;
+}
+.section-rule {
+  width: 100%; height: 1px; background: var(--rule);
+  margin-bottom: 40px;
+}
+.section-h2 {
+  font-size: clamp(40px, 4vw, 64px);
+  font-weight: 800; letter-spacing: -.03em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+.section-body {
+  font-size: 17px; line-height: 28px;
+  color: var(--ink-soft);
+}
+.section-body p + p { margin-top: 24px; }
+
+/* camera feature */
+.camera-spread { background: var(--paper); }
+.camera-img-wrap {
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  position: relative; overflow: hidden;
+}
+.camera-img-wrap::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 30% 60%, rgba(20,40,160,.4), transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(255,255,255,.05), transparent 40%);
+}
+.camera-placeholder-text {
+  position: absolute; bottom: 24px; left: 24px;
+  font-family: "Space Mono", monospace;
+  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+}
+.camera-lens-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow:
+    inset 0 0 60px rgba(20,40,160,.3),
+    0 0 80px rgba(20,40,160,.2);
+}
+.camera-lens-ring::before {
+  content: '';
+  position: absolute;
+  inset: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #1428A0 0%, #0a0a0a 100%);
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+/* ai feature */
+.ai-spread { background: var(--ink); color: #fff; }
+.ai-chip {
+  width: 100%; aspect-ratio: 1;
+  background: linear-gradient(135deg, #1428A0 0%, #0a0a3a 100%);
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.ai-chip::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.ai-chip-label {
+  font-family: "Space Mono", monospace;
+  font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  position: absolute; top: 24px; left: 24px;
+}
+.ai-chip-num {
+  font-size: 120px; font-weight: 900; letter-spacing: -.06em;
+  color: rgba(255,255,255,.06);
+  position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+.ai-chip-center {
+  width: 80px; height: 80px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 2;
+}
+.ai-chip-center svg { width: 36px; height: 36px; opacity: .8; }
+.ai-feature-list {
+  list-style: none;
+  margin-top: 48px;
+}
+.ai-feature-list li {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255,255,255,.08);
+  font-size: 15px; line-height: 24px;
+  color: rgba(255,255,255,.6);
+}
+.ai-feature-list li:last-child { border-bottom: 1px solid rgba(255,255,255,.08); }
+.ai-feature-num {
+  font-family: "Space Mono", monospace;
+  font-size: 10px; letter-spacing: .1em;
+  color: var(--accent);
+  flex-shrink: 0; padding-top: 2px;
+  min-width: 28px;
+}
+.ai-feature-title { font-weight: 600; color: #fff; display: block; margin-bottom: 4px; }
+
+/* colors */
+.colors-spread { background: var(--paper); }
+.color-swatch {
+  aspect-ratio: 1 / 1.2;
+  position: relative; overflow: hidden;
+  display: flex; align-items: flex-end; padding: 24px;
+}
+.color-name {
+  font-family: "Space Mono", monospace;
+  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+}
+.swatch-titanium-black { background: #1c1c1e; color: rgba(255,255,255,.5); }
+.swatch-titanium-white { background: #f5f5f0; color: rgba(0,0,0,.4); border: 1px solid #e8e8e0; }
+.swatch-titanium-silver { background: linear-gradient(145deg, #c8cdd4 0%, #e8eaed 100%); color: rgba(0,0,0,.5); }
+.swatch-titanium-blue { background: linear-gradient(145deg, #1428A0 0%, #2d47c8 100%); color: rgba(255,255,255,.6); }
+
+/* buy section */
+.buy-spread { background: var(--accent); color: #fff; }
+.buy-price-block { padding: 96px 0; }
+.buy-from {
+  font-family: "Space Mono", monospace;
+  font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+  display: block; margin-bottom: 16px;
+}
+.buy-price {
+  font-size: clamp(72px, 8vw, 128px);
+  font-weight: 900; letter-spacing: -.05em;
+  line-height: 1; color: #fff;
+  display: block; margin-bottom: 48px;
+}
+.buy-actions { display: flex; gap: 16px; }
+.btn-white {
+  background: #fff; color: var(--accent);
+  font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: 18px 48px; border: none; cursor: pointer;
+  transition: opacity .15s;
+}
+.btn-white:hover { opacity: .9; }
+.btn-ghost-white {
+  background: transparent; color: rgba(255,255,255,.7);
+  font-size: 13px; font-weight: 500; letter-spacing: .08em;
+  padding: 18px 0;
+  border: none; border-bottom: 1px solid rgba(255,255,255,.4);
+  cursor: pointer; transition: color .15s, border-color .15s;
+}
+.btn-ghost-white:hover { color: #fff; border-color: #fff; }
+.buy-models {
+  padding-top: 48px;
+  border-top: 1px solid rgba(255,255,255,.15);
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.buy-model {
+  padding: 32px;
+  border-right: 1px solid rgba(255,255,255,.15);
+}
+.buy-model:last-child { border-right: none; }
+.buy-model-name {
+  font-size: 18px; font-weight: 700; color: #fff;
+  margin-bottom: 8px;
+}
+.buy-model-price {
+  font-family: "Space Mono", monospace;
+  font-size: 24px; font-weight: 700; color: rgba(255,255,255,.8);
+  margin-bottom: 16px; display: block;
+}
+.buy-model-specs {
+  font-size: 12px; line-height: 20px; color: rgba(255,255,255,.5);
+  list-style: none;
+}
+
+/* footer */
+.footer { background: var(--ink); color: rgba(255,255,255,.35); }
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  padding-top: 48px; padding-bottom: 48px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.footer-logo {
+  font-size: 24px; font-weight: 700; color: rgba(255,255,255,.08);
+  letter-spacing: -.02em;
+}
+.footer-copy {
+  font-family: "Space Mono", monospace;
+  font-size: 10px; letter-spacing: .1em;
+}
+.footer-links { display: flex; gap: 32px; }
+.footer-links a {
+  font-family: "Space Mono", monospace;
+  font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.25);
+  transition: color .15s;
+}
+.footer-links a:hover { color: rgba(255,255,255,.6); }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  :root { --margin: 24px; --gutter: 16px; }
+  .hero-phone { display: none; }
+  .hero-h1 { font-size: 48px; }
+  .buy-models { grid-template-columns: 1fr; }
+  .buy-model { border-right: none; border-bottom: 1px solid rgba(255,255,255,.15); }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- GRID TOGGLE -->
+<button class="toggle" id="gridToggle" aria-pressed="false">
+  <span class="dot"></span>
+  <span class="lbl">Show grid</span>
+</button>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="spread">
+    <div class="wrap wrap--flush">
+      <div class="nav-inner">
+        <div class="nav-logo">SAMSUNG<span>.</span></div>
+        <ul class="nav-links">
+          <li><a href="#camera">Camera</a></li>
+          <li><a href="#ai">Galaxy AI</a></li>
+          <li><a href="#design">Design</a></li>
+          <li><a href="#buy">Buy</a></li>
+        </ul>
+        <button class="nav-cta">Order Now</button>
+      </div>
+    </div>
+    <div class="guides" aria-hidden="true">
+      <div class="cols"></div>
+      <div class="mline l"></div><div class="mline r"></div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     SPREAD 1 — HERO
+     ═══════════════════════════════════════════════ -->
+<section class="hero-spread spread">
+  <div class="hero-bg"></div>
+
+  <!-- phone visual -->
+  <div class="hero-phone" aria-hidden="true">
+    <div class="hero-phone-placeholder"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="wrap">
+      <div class="grid">
+
+        <!-- folio -->
+        <div class="band">
+          <div style="grid-column:1 / -1;">
+            <span class="hero-kicker">Galaxy S25 Ultra · 2025</span>
+          </div>
+        </div>
+
+        <!-- headline band -->
+        <div class="band masthead" style="row-gap:0;">
+          <div style="grid-column:1 / 8;">
+            <h1 class="hero-h1">The<br>Intelligence<br>of <em>Now.</em></h1>
+          </div>
+        </div>
+
+        <!-- lede band -->
+        <div class="band">
+          <div class="hero-lede" style="grid-column:1 / 6;">
+            Galaxy AI, redefined. The S25 Ultra thinks before you act, sees before you point, and creates before you ask — all on-device, all in real time.
+          </div>
+        </div>
+
+        <!-- cta band -->
+        <div class="band">
+          <div style="grid-column:1 / 6;">
+            <div class="hero-actions">
+              <button class="btn-primary">Buy from $1,299</button>
+              <button class="btn-ghost">Explore specs</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /grid -->
+    </div><!-- /wrap -->
+  </div><!-- /hero-content -->
+
+  <!-- stats -->
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num">200MP</span>
+      <span class="hero-stat-label">Primary camera</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">7nm</span>
+      <span class="hero-stat-label">Gate-all-around</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">50hr</span>
+      <span class="hero-stat-label">Battery life</span>
+    </div>
+  </div>
+
+  <div class="hero-folio">S-25 — 001</div>
+
+  <div class="guides" aria-hidden="true">
+    <div class="cols"></div>
+    <div class="rows"></div>
+    <div class="mline l"></div><div class="mline r"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SPREAD 2 — SPECS BAR
+     ═══════════════════════════════════════════════ -->
+<section class="specs-spread spread">
+  <div class="wrap">
+    <div class="grid">
+      <div class="band">
+        <div style="grid-column:1 / -1;">
+          <div style="display:flex; gap:0;">
+            <div class="spec-item">
+              <span class="spec-num">200<span class="spec-unit">MP</span></span>
+              <span class="spec-label">Quad rear camera</span>
+              <p class="spec-desc">200MP wide · 50MP 5× tele · 10MP 3× tele · 12MP ultra</p>
+            </div>
+            <div class="spec-item" style="padding-left:32px;">
+              <span class="spec-num">3nm</span>
+              <span class="spec-label">Snapdragon 8 Elite</span>
+              <p class="spec-desc">Custom-tuned for Galaxy AI workloads</p>
+            </div>
+            <div class="spec-item" style="padding-left:32px;">
+              <span class="spec-num">50hr</span>
+              <span class="spec-label">Endurance rating</span>
+              <p class="spec-desc">5,000mAh · 45W wired · 15W wireless</p>
+            </div>
+            <div class="spec-item" style="padding-left:32px;">
+              <span class="spec-num">6.9<span class="spec-unit">"</span></span>
+              <span class="spec-label">Dynamic AMOLED 2X</span>
+              <p class="spec-desc">2600 nits peak · 1–120Hz adaptive</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="guides" aria-hidden="true">
+      <div class="cols"></div>
+      <div class="rows"></div>
+      <div class="mline l"></div><div class="mline r"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SPREAD 3 — CAMERA
+     ═══════════════════════════════════════════════ -->
+<section class="camera-spread spread" id="camera">
+  <div class="wrap">
+    <div class="grid">
+
+      <!-- rule + kicker -->
+      <div class="band">
+        <div style="grid-column:1 / -1;">
+          <hr class="section-rule">
+        </div>
+      </div>
+
+      <!-- text + image -->
+      <div class="band" style="align-items:stretch; row-gap:0;">
+
+        <!-- left: text col -->
+        <div style="grid-column:1 / 5; padding-top:8px; padding-bottom:96px;">
+          <span class="section-kicker">Camera System</span>
+          <h2 class="section-h2 shead"><span style="display:block;">See it all.</span><span style="display:block;">Miss nothing.</span></h2>
+          <div class="section-body">
+            <p>The quad-camera array is tuned by computational photography engineers who spent three years mapping light behavior in 40,000 real scenes.</p>
+            <p>The 200MP sensor captures at the photon level — then Galaxy AI composites, sharpens, and color-grades in 0.3 seconds. Night mode is now always on.</p>
+          </div>
+
+          <div style="margin-top:48px; padding-top:48px; border-top:1px solid var(--rule);">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px 24px;">
+              <div>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:8px;">Primary</span>
+                <span style="font-size:28px;font-weight:800;letter-spacing:-.03em;display:block;line-height:32px;">200MP</span>
+                <span style="font-size:12px;color:var(--ink-soft);">f/1.7 · OIS · 8K video</span>
+              </div>
+              <div>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:8px;">Telephoto</span>
+                <span style="font-size:28px;font-weight:800;letter-spacing:-.03em;display:block;line-height:32px;">50MP</span>
+                <span style="font-size:12px;color:var(--ink-soft);">5× optical · 100× Space Zoom</span>
+              </div>
+              <div>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:8px;">Ultra-wide</span>
+                <span style="font-size:28px;font-weight:800;letter-spacing:-.03em;display:block;line-height:32px;">12MP</span>
+                <span style="font-size:12px;color:var(--ink-soft);">120° FOV · Macro capable</span>
+              </div>
+              <div>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:8px;">Selfie</span>
+                <span style="font-size:28px;font-weight:800;letter-spacing:-.03em;display:block;line-height:32px;">12MP</span>
+                <span style="font-size:12px;color:var(--ink-soft);">Dual Pixel AF · 4K · f/2.2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- right: image col -->
+        <div style="grid-column:5 / 13; height:720px;">
+          <div class="camera-img-wrap" style="height:100%;">
+            <div class="camera-lens-ring"></div>
+            <span class="camera-placeholder-text">200MP Nightography · f/1.7 · OIS</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="guides" aria-hidden="true">
+      <div class="cols"></div>
+      <div class="rows"></div>
+      <div class="mline l"></div><div class="mline r"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SPREAD 4 — GALAXY AI
+     ═══════════════════════════════════════════════ -->
+<section class="ai-spread spread" id="ai">
+  <div class="wrap">
+    <div class="grid">
+
+      <div class="band">
+        <div style="grid-column:1 / -1;">
+          <hr style="border:none;border-top:1px solid rgba(255,255,255,.08);margin-bottom:40px;">
+        </div>
+      </div>
+
+      <div class="band" style="align-items:start; row-gap:0;">
+
+        <!-- left: chip visual -->
+        <div style="grid-column:1 / 6;">
+          <div class="ai-chip">
+            <span class="ai-chip-label">Snapdragon 8 Elite · NPU</span>
+            <div class="ai-chip-num">AI</div>
+            <div class="ai-chip-center">
+              <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="18" cy="18" r="8" stroke="white" stroke-width="1.5"/>
+                <circle cx="18" cy="18" r="3" fill="white" opacity=".6"/>
+                <line x1="18" y1="2" x2="18" y2="10" stroke="white" stroke-width="1.5" opacity=".4"/>
+                <line x1="18" y1="26" x2="18" y2="34" stroke="white" stroke-width="1.5" opacity=".4"/>
+                <line x1="2" y1="18" x2="10" y2="18" stroke="white" stroke-width="1.5" opacity=".4"/>
+                <line x1="26" y1="18" x2="34" y2="18" stroke="white" stroke-width="1.5" opacity=".4"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- right: text + features -->
+        <div style="grid-column:6 / 13; padding-top:8px; padding-bottom:96px;">
+          <span class="section-kicker" style="color:rgba(255,255,255,.35);">Galaxy AI</span>
+          <h2 class="section-h2" style="color:#fff;">
+            <span style="display:block;">On-device.</span>
+            <span style="display:block;">Always on.</span>
+          </h2>
+          <p class="section-body" style="color:rgba(255,255,255,.5);">Galaxy AI processes your world privately, on your phone, in real time. No cloud round-trip. No waiting. No compromise.</p>
+
+          <ul class="ai-feature-list">
+            <li>
+              <span class="ai-feature-num">01</span>
+              <div>
+                <span class="ai-feature-title">Live Translate</span>
+                Real-time speech translation across 20 languages during calls and conversations.
+              </div>
+            </li>
+            <li>
+              <span class="ai-feature-num">02</span>
+              <div>
+                <span class="ai-feature-title">Circle to Search</span>
+                Circle anything on screen. Galaxy AI finds it, explains it, or buys it — instantly.
+              </div>
+            </li>
+            <li>
+              <span class="ai-feature-num">03</span>
+              <div>
+                <span class="ai-feature-title">Generative Edit</span>
+                Remove, replace, reframe, or extend any photo. On-device. Unlimited.
+              </div>
+            </li>
+            <li>
+              <span class="ai-feature-num">04</span>
+              <div>
+                <span class="ai-feature-title">Note Assist</span>
+                Voice notes auto-transcribed, summarized, and formatted in seconds.
+              </div>
+            </li>
+            <li>
+              <span class="ai-feature-num">05</span>
+              <div>
+                <span class="ai-feature-title">ProVisual Engine</span>
+                AI scene optimizer fires before you press shutter — 200MP, perfectly exposed.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    <div class="guides" aria-hidden="true">
+      <div class="cols"></div>
+      <div class="rows"></div>
+      <div class="mline l"></div><div class="mline r"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SPREAD 5 — DESIGN / COLORS
+     ═══════════════════════════════════════════════ -->
+<section class="colors-spread spread" id="design">
+  <div class="wrap">
+    <div class="grid">
+
+      <div class="band">
+        <div style="grid-column:1 / -1;">
+          <hr class="section-rule">
+        </div>
+      </div>
+
+      <!-- headline -->
+      <div class="band">
+        <div style="grid-column:1 / 7;">
+          <span class="section-kicker">Titanium Design</span>
+          <h2 class="section-h2">Precision. In every frame.</h2>
+        </div>
+        <div style="grid-column:7 / 13; padding-top:16px;">
+          <p class="section-body">
+            The S25 Ultra is machined from aerospace-grade Titanium 7 — lighter than steel, stronger than aluminium. Every edge is chamfered at 0.3mm. The S Pen clicks flush with no seam.
+          </p>
+          <p class="section-body" style="margin-top:24px;">
+            Available in four colorways. Each is PVD-coated, IP68-rated, and designed to read differently in direct and ambient light.
+          </p>
+        </div>
+      </div>
+
+      <!-- swatches -->
+      <div class="band" style="margin-top:8px;">
+        <div class="color-swatch swatch-titanium-black" style="grid-column:1 / 4;">
+          <span class="color-name">Titanium Black</span>
+        </div>
+        <div class="color-swatch swatch-titanium-white" style="grid-column:4 / 7;">
+          <span class="color-name">Titanium White Silver</span>
+        </div>
+        <div class="color-swatch swatch-titanium-silver" style="grid-column:7 / 10;">
+          <span class="color-name">Titanium Silver Blue</span>
+        </div>
+        <div class="color-swatch swatch-titanium-blue" style="grid-column:10 / 13;">
+          <span class="color-name">Titanium Blue Black</span>
+        </div>
+      </div>
+
+      <!-- s-pen note -->
+      <div class="band" style="margin-top:48px;">
+        <div style="grid-column:1 / -1; border-top:1px solid var(--rule); padding-top:40px; display:flex; gap:48px; align-items:flex-start;">
+          <div style="flex:1;">
+            <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:16px;">S Pen</span>
+            <span style="font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1;display:block;margin-bottom:16px;">2.8ms</span>
+            <span style="font-size:14px;color:var(--ink-soft);">Ultra-low latency. Feels like writing on paper.</span>
+          </div>
+          <div style="flex:1;">
+            <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:16px;">Display</span>
+            <span style="font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1;display:block;margin-bottom:16px;">2600</span>
+            <span style="font-size:14px;color:var(--ink-soft);">Peak nits. Readable in direct sunlight.</span>
+          </div>
+          <div style="flex:1;">
+            <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:16px;">Durability</span>
+            <span style="font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1;display:block;margin-bottom:16px;">IP68</span>
+            <span style="font-size:14px;color:var(--ink-soft);">10m submersion. Gorilla Glass Armor 2.</span>
+          </div>
+          <div style="flex:1;">
+            <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:16px;">Connectivity</span>
+            <span style="font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1;display:block;margin-bottom:16px;">Wi-Fi<span style="font-size:24px;">7</span></span>
+            <span style="font-size:14px;color:var(--ink-soft);">Bluetooth 5.4 · NFC · UWB.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="guides" aria-hidden="true">
+      <div class="cols"></div>
+      <div class="rows"></div>
+      <div class="mline l"></div><div class="mline r"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SPREAD 6 — BUY
+     ═══════════════════════════════════════════════ -->
+<section class="buy-spread spread" id="buy">
+  <div class="wrap">
+    <div class="grid">
+      <div class="band">
+        <div style="grid-column:1 / 7;" class="buy-price-block">
+          <span class="buy-from">Starting from</span>
+          <span class="buy-price numeral">$1,299</span>
+          <div class="buy-actions">
+            <button class="btn-white">Order Now</button>
+            <button class="btn-ghost-white">Compare models</button>
+          </div>
+        </div>
+        <div style="grid-column:7 / 13; display:flex; align-items:center;">
+          <div style="width:100%;">
+            <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-bottom:24px;">Galaxy S25 Series</span>
+            <div class="buy-models">
+              <div class="buy-model">
+                <div class="buy-model-name">S25</div>
+                <span class="buy-model-price">$799</span>
+                <ul class="buy-model-specs">
+                  <li>6.2" · 50MP · 4,000mAh</li>
+                  <li>128GB / 256GB</li>
+                  <li>Snapdragon 8 Elite</li>
+                </ul>
+              </div>
+              <div class="buy-model">
+                <div class="buy-model-name">S25+</div>
+                <span class="buy-model-price">$999</span>
+                <ul class="buy-model-specs">
+                  <li>6.7" · 50MP · 4,900mAh</li>
+                  <li>256GB / 512GB</li>
+                  <li>Snapdragon 8 Elite</li>
+                </ul>
+              </div>
+              <div class="buy-model" style="background:rgba(255,255,255,.08);">
+                <div class="buy-model-name">S25 Ultra ✦</div>
+                <span class="buy-model-price">$1,299</span>
+                <ul class="buy-model-specs">
+                  <li>6.9" · 200MP · 5,000mAh</li>
+                  <li>256GB / 512GB / 1TB</li>
+                  <li>S Pen · Titanium frame</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="guides" aria-hidden="true">
+      <div class="cols"></div>
+      <div class="rows"></div>
+      <div class="mline l"></div><div class="mline r"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════ -->
+<footer class="footer spread">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-logo">SAMSUNG</div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Legal</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-copy">© 2025 Samsung Electronics Co., Ltd.</div>
+    </div>
+    <div class="guides" aria-hidden="true">
+      <div class="cols"></div>
+      <div class="mline l"></div><div class="mline r"></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---- GRID TOGGLE: button + G key ---- */
+var btn = document.getElementById('gridToggle');
+function setGrid(on) {
+  document.body.classList.toggle('grid-on', on);
+  if (btn) {
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    var l = btn.querySelector('.lbl');
+    if (l) l.textContent = on ? 'Hide grid' : 'Show grid';
+  }
+}
+if (btn) btn.addEventListener('click', function() {
+  setGrid(!document.body.classList.contains('grid-on'));
+});
+document.addEventListener('keydown', function(e) {
+  if ((e.key === 'g' || e.key === 'G') && !e.metaKey && !e.ctrlKey && !e.altKey) {
+    setGrid(!document.body.classList.contains('grid-on'));
+  }
+});
+
+/* ---- POPULATE column guides (numbered) in every overlay ---- */
+document.querySelectorAll('.guides .cols').forEach(function(h) {
+  var n = getComputedStyle(document.documentElement).getPropertyValue('--cols').trim() || '12';
+  for (var i = 1; i <= parseInt(n, 10); i++) {
+    var c = document.createElement('div'); c.className = 'col';
+    var s = document.createElement('span'); s.textContent = i;
+    c.appendChild(s); h.appendChild(c);
+  }
+});
+
+/* ---- OPTICAL ALIGNMENT: shift display type so INK lands on column line ---- */
+(function() {
+  var cvs = document.createElement('canvas'), ctx = cvs.getContext('2d');
+  var sel = '.masthead, .numeral, .hero-h1, .section-h2, .buy-price, .spec-num';
+  function align() {
+    document.querySelectorAll(sel).forEach(function(el) {
+      el.style.marginLeft = '0px';
+      var cs = getComputedStyle(el);
+      var ch = (el.textContent || '').trim().charAt(0);
+      if (!ch) return;
+      if (cs.textTransform === 'uppercase') ch = ch.toUpperCase();
+      ctx.font = cs.fontStyle + ' ' + cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
+      ctx.textAlign = 'left';
+      var abl = ctx.measureText(ch).actualBoundingBoxLeft;
+      if (isFinite(abl)) el.style.marginLeft = abl.toFixed(2) + 'px';
+    });
+  }
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(align); }
+  align();
+  var t;
+  window.addEventListener('resize', function() { clearTimeout(t); t = setTimeout(align, 120); });
+})();
+
+/* ---- SMOOTH nav active states ---- */
+var sections = document.querySelectorAll('section[id]');
+var navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', function() {
+  var y = window.scrollY + 80;
+  sections.forEach(function(s) {
+    if (s.offsetTop <= y && s.offsetTop + s.offsetHeight > y) {
+      navLinks.forEach(function(a) {
+        a.style.color = a.getAttribute('href') === '#' + s.id
+          ? 'var(--accent)'
+          : '';
+      });
+    }
+  });
+}, { passive: true });
+</script>
+
+</body>
+</html>
