@@ -1,0 +1,34 @@
+Gestionnaire de Mods & Tray - Les Sims 4 (Windows 64 bits)
+============================================================
+
+Le fichier .exe complet fait environ 128 Mo, ce qui dépasse la limite
+de 100 Mo par fichier de GitHub. Il est donc fourni en 2 morceaux à
+recoller.
+
+1) Télécharge les 2 fichiers de ce dossier :
+   - Sims4ModManager-win32-x64.zip.part00
+   - Sims4ModManager-win32-x64.zip.part01
+   (place-les dans le même dossier sur ton PC)
+
+2) Recolle-les en un seul fichier ZIP :
+
+   Sous Windows, ouvre une Invite de commandes (cmd) dans ce dossier
+   et tape :
+
+       copy /b Sims4ModManager-win32-x64.zip.part00 + Sims4ModManager-win32-x64.zip.part01 Sims4ModManager-win32-x64.zip
+
+3) (Optionnel) Vérifie que le fichier recollé est intact en comparant
+   son empreinte à celle du fichier Sims4ModManager-win32-x64.zip.sha256 :
+
+       certutil -hashfile Sims4ModManager-win32-x64.zip SHA256
+
+   Le résultat doit correspondre à l'empreinte indiquée dans le
+   fichier .sha256.
+
+4) Décompresse Sims4ModManager-win32-x64.zip (clic droit > Extraire
+   tout), puis lance Sims4ModManager.exe dans le dossier extrait.
+
+Note : Windows peut afficher un avertissement "éditeur inconnu" au
+premier lancement (l'application n'est pas signée numériquement -
+normal pour un projet non commercial, voir LISEZMOI.md à la racine
+du dépôt).
