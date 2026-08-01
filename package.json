@@ -1,0 +1,22 @@
+{
+  "name": "sims4-mod-manager",
+  "productName": "Gestionnaire de Mods et Tray - Les Sims 4",
+  "version": "1.0.0",
+  "description": "Gestionnaire de Mods & Tray pour Les Sims 4 (Electron)",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "package-win": "electron-packager . Sims4ModManager --platform=win32 --arch=x64 --out=dist --overwrite",
+    "package-mac": "electron-packager . Sims4ModManager --platform=darwin --arch=x64 --out=dist --overwrite"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "unzipper": "^0.12.3"
+  },
+  "devDependencies": {
+    "electron": "^43.0.0",
+    "electron-packager": "^17.1.2"
+  }
+}
