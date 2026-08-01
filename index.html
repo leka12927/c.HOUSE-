@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>Gestionnaire de Mods & Tray - Les Sims 4</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="mods">Mods</button>
+  <button class="tab-btn" data-tab="tray">Tray</button>
+  <button class="tab-btn" data-tab="updates">Mises à jour</button>
+  <button id="theme-toggle" class="theme-toggle" title="Basculer le mode sombre">🌙</button>
+</div>
+
+<!-- ================= MODS ================= -->
+<section id="tab-mods" class="tab-panel active">
+  <div class="toolbar">
+    <span>Dossier Mods :</span>
+    <span id="mods-folder-label" class="folder-label"></span>
+    <button id="mods-choose-folder">Changer de dossier</button>
+    <button id="mods-refresh">Actualiser</button>
+    <button id="mods-find-dup">Rechercher les doublons</button>
+    <button id="mods-find-conflicts">Rechercher des conflits</button>
+    <button id="mods-dichotomy">Assistant de dépannage</button>
+  </div>
+
+  <div class="toolbar">
+    <input id="mods-search" placeholder="Rechercher..." />
+    <select id="mods-cat-filter"><option>Toute catégorie</option></select>
+    <select id="mods-status-filter">
+      <option>Tout statut</option><option>Activé</option><option>Désactivé</option>
+    </select>
+    <select id="mods-compat-filter"><option>Toute compatibilité</option><option>À vérifier</option></select>
+  </div>
+
+  <div class="toolbar">
+    <span>Date de la dernière mise à jour du jeu (AAAA-MM-JJ) :</span>
+    <input id="patch-date" placeholder="2026-06-01" style="width:120px" />
+    <button id="analyze-compat">Analyser compatibilité</button>
+  </div>
+
+  <div class="split">
+    <div class="table-wrap">
+      <table id="mods-table">
+        <thead><tr>
+          <th data-field="rel">Nom / Chemin</th><th data-field="category">Catégorie</th>
+          <th data-field="tags">Tags</th><th data-field="compat">Compat.</th>
+          <th data-field="size">Taille</th><th data-field="status">Statut</th>
+          <th data-field="mtimeMs">Modifié</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="preview">
+      <div class="preview-label">Aperçu</div>
+      <div id="mods-thumb" class="thumb-box">(sélectionne un fichier)</div>
+      <label>Tags (séparés par des virgules)</label>
+      <input id="mods-tags-input" />
+      <label>Note</label>
+      <textarea id="mods-note-input" rows="5"></textarea>
+      <button id="mods-save-note">Enregistrer</button>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <button id="mods-enable">Activer</button>
+    <button id="mods-disable">Désactiver</button>
+    <button id="mods-disable-folder">Désactiver tout un dossier</button>
+    <button id="mods-delete">Supprimer</button>
+    <button id="mods-open-parent">Ouvrir le dossier parent</button>
+    <button id="mods-bulk-tag">Ajouter un tag à la sélection</button>
+  </div>
+  <div class="toolbar">
+    <button id="mods-disable-all" class="warn">⚠ Tout désactiver</button>
+    <button id="mods-enable-all" class="ok">✓ Tout réactiver</button>
+    <button id="mods-export-csv">Exporter la liste (CSV)</button>
+    <button id="mods-backup-zip">Créer une sauvegarde ZIP</button>
+    <button id="mods-restore-zip">Restaurer une sauvegarde ZIP</button>
+  </div>
+
+  <div class="table-footer" id="mods-load-more-wrap" style="display:none">
+    <button id="mods-load-more"></button>
+  </div>
+
+  <div id="mods-status" class="status-line"></div>
+</section>
+
+<!-- ================= TRAY ================= -->
+<section id="tab-tray" class="tab-panel">
+  <div class="toolbar">
+    <span>Dossier Tray :</span>
+    <span id="tray-folder-label" class="folder-label"></span>
+    <button id="tray-choose-folder">Changer de dossier</button>
+    <button id="tray-refresh">Actualiser</button>
+  </div>
+  <div class="toolbar">
+    <input id="tray-search" placeholder="Rechercher..." />
+    <select id="tray-type-filter">
+      <option>Tout</option><option>Ménage</option><option>Sim</option>
+      <option>Pièce / Terrain</option><option>Pièce</option><option>Objet Tray</option>
+      <option>Orphelins</option>
+    </select>
+  </div>
+  <div class="split">
+    <div class="table-wrap">
+      <table id="tray-table">
+        <thead><tr>
+          <th data-field="base">Nom</th><th data-field="type">Type</th>
+          <th data-field="size">Taille</th><th data-field="mtimeMs">Modifié</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="preview">
+      <div class="preview-label">Aperçu</div>
+      <div id="tray-thumb" class="thumb-box">(pas d'image)</div>
+      <div id="tray-info" class="tray-info"></div>
+    </div>
+  </div>
+  <div class="toolbar">
+    <button id="tray-delete">Supprimer la sélection (tous les fichiers liés)</button>
+    <button id="tray-open-folder">Ouvrir le dossier Tray</button>
+  </div>
+  <div id="tray-status" class="status-line"></div>
+</section>
+
+<!-- ================= UPDATES ================= -->
+<section id="tab-updates" class="tab-panel">
+  <div class="toolbar">
+    <span id="compat-summary" class="warn-text"></span>
+    <button id="updates-jump-mods">Voir ces mods dans l'onglet Mods</button>
+  </div>
+
+  <div class="toolbar">
+    <button id="updates-add">Ajouter un suivi</button>
+    <button id="updates-check-all">Vérifier tout maintenant</button>
+    <button id="updates-delete">Supprimer la sélection</button>
+    <button id="updates-open-link">Ouvrir le lien</button>
+    <button id="updates-mark-seen">Marquer comme à jour</button>
+  </div>
+  <div class="toolbar">
+    <label><input type="checkbox" id="updates-auto-check" /> Vérifier automatiquement au démarrage</label>
+  </div>
+
+  <div class="table-wrap">
+    <table id="updates-table">
+      <thead><tr>
+        <th>Nom</th><th>Type</th><th>Suivi</th><th>Installée</th>
+        <th>Dernière vue</th><th>Statut</th><th>Vérifié le</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <p class="note-text">
+    Limite honnête : il n'existe pas de base de données universelle des mises à jour de
+    CC/mods Sims 4. Le suivi GitHub vérifie la vraie dernière version publiée. Le suivi
+    par lien générique détecte seulement si une page a changé depuis ta dernière
+    vérification — ce n'est pas toujours fiable selon les sites.
+  </p>
+</section>
+
+<!-- ================= MODALES ================= -->
+<div id="modal-backdrop" class="modal-backdrop hidden">
+
+  <div id="modal-duplicates" class="modal hidden">
+    <h3>Doublons dans le dossier Mods</h3>
+    <div id="dup-info"></div>
+    <div class="table-wrap modal-table">
+      <table id="dup-table"><thead><tr><th>Chemin</th><th>Taille</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="toolbar">
+      <button id="dup-delete">Supprimer la sélection</button>
+      <button id="dup-close">Fermer</button>
+    </div>
+  </div>
+
+  <div id="modal-conflicts" class="modal hidden">
+    <h3>Conflits potentiels entre mods</h3>
+    <p class="note-text" style="margin-top:0">
+      Deux mods qui définissent la même ressource (même clé interne) peuvent se
+      marcher dessus : le jeu n'en utilisera qu'un des deux, en général le dernier
+      chargé. Ce n'est pas forcément un problème (certains packs sont conçus pour
+      remplacer d'autres), mais ça vaut la peine d'y jeter un œil.
+    </p>
+    <div id="conflicts-info"></div>
+    <div class="table-wrap modal-table">
+      <table id="conflicts-table"><thead><tr><th>Fichier</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="toolbar">
+      <button id="conflicts-close">Fermer</button>
+    </div>
+  </div>
+
+  <div id="modal-dichotomy" class="modal hidden">
+    <h3>Assistant de dépannage - Isoler un mod fautif</h3>
+    <div id="dicho-text"></div>
+    <div class="toolbar" id="dicho-buttons"></div>
+  </div>
+
+  <div id="modal-add-watch" class="modal hidden">
+    <h3>Ajouter un suivi de mise à jour</h3>
+    <label>Nom du mod</label>
+    <input id="watch-name" />
+    <label>Type de suivi</label>
+    <select id="watch-type">
+      <option value="github">GitHub (dépôt owner/repo)</option>
+      <option value="url">Lien générique (page web)</option>
+    </select>
+    <label>Dépôt (ex: Createur/nom-du-mod) ou URL</label>
+    <input id="watch-value" />
+    <label>Version installée actuellement (facultatif)</label>
+    <input id="watch-installed" />
+    <div class="toolbar">
+      <button id="watch-save">Ajouter</button>
+      <button id="watch-cancel">Annuler</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="icons.js"></script>
+<script src="renderer.js"></script>
+</body>
+</html>
